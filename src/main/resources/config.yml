@@ -1,0 +1,5 @@
+# 是否开启更新提醒,建议开启
+isCheckUpdate: true
+
+# op登录时候是否发送更新提醒
+isCheckUpdateToOpMsg: true
