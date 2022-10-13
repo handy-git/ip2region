@@ -31,7 +31,7 @@ public class PlayerJoinEventListener implements Listener {
         new BukkitRunnable() {
             @Override
             public void run() {
-                SearcherUtil.getInstance().getPlayerRegion(event.getPlayer());
+                SearcherUtil.getPlayerRegion(event.getPlayer());
             }
         }.runTaskAsynchronously(Ip2region.getInstance());
     }

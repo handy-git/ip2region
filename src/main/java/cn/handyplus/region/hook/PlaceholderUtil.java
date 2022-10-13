@@ -2,7 +2,7 @@ package cn.handyplus.region.hook;
 
 import cn.handyplus.lib.core.StrUtil;
 import cn.handyplus.region.Ip2region;
-import cn.handyplus.region.util.SearcherUtil;
+import cn.handyplus.region.constants.IpConstants;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.OfflinePlayer;
 
@@ -45,7 +45,10 @@ public class PlaceholderUtil extends PlaceholderExpansion {
         if (player == null) {
             return null;
         }
-        String region = SearcherUtil.PLAYER_REGION_MAP.get(player.getUniqueId());
+        String region = IpConstants.PLAYER_REGION_MAP.get(player.getUniqueId());
+        if (StrUtil.isEmpty(region)) {
+            return "未知";
+        }
         List<String> list = strToStrList(region);
         String national = list.get(0);
         String provincial = list.get(2);
@@ -71,8 +74,6 @@ public class PlaceholderUtil extends PlaceholderExpansion {
         if ("serviceProvider".equals(identifier)) {
             return plugin.getConfig().getString(identifier, serviceProvider);
         }
-
-
         return null;
     }
 

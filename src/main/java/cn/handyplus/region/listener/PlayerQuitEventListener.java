@@ -2,7 +2,7 @@ package cn.handyplus.region.listener;
 
 import cn.handyplus.lib.annotation.HandyListener;
 import cn.handyplus.region.Ip2region;
-import cn.handyplus.region.util.SearcherUtil;
+import cn.handyplus.region.constants.IpConstants;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -47,7 +47,7 @@ public class PlayerQuitEventListener implements Listener {
         new BukkitRunnable() {
             @Override
             public void run() {
-                SearcherUtil.PLAYER_REGION_MAP.remove(player.getUniqueId());
+                IpConstants.PLAYER_REGION_MAP.remove(player.getUniqueId());
             }
         }.runTaskAsynchronously(Ip2region.getInstance());
     }
