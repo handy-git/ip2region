@@ -47,7 +47,7 @@ public class PlaceholderUtil extends PlaceholderExpansion {
         }
         String region = IpConstants.PLAYER_REGION_MAP.get(player.getUniqueId());
         if (StrUtil.isEmpty(region)) {
-            return "未知";
+            return plugin.getConfig().getString(identifier, "未知");
         }
         List<String> list = strToStrList(region);
         String national = list.get(0);
