@@ -60,19 +60,19 @@ public class PlaceholderUtil extends PlaceholderExpansion {
         }
         // %ip2region_national%
         if ("national".equals(identifier)) {
-            return plugin.getConfig().getString(identifier, national);
+            return plugin.getConfig().getString(identifier, "0".equals(national) ? "未知" : national);
         }
         // %ip2region_provincial%
         if ("provincial".equals(identifier)) {
-            return plugin.getConfig().getString(identifier, provincial);
+            return plugin.getConfig().getString(identifier, "0".equals(provincial) ? "未知" : provincial);
         }
         // %ip2region_municipal%
         if ("municipal".equals(identifier)) {
-            return plugin.getConfig().getString(identifier, municipal);
+            return plugin.getConfig().getString(identifier, "0".equals(municipal) ? "未知" : municipal);
         }
         // %ip2region_serviceProvider%
         if ("serviceProvider".equals(identifier)) {
-            return plugin.getConfig().getString(identifier, serviceProvider);
+            return plugin.getConfig().getString(identifier, "0".equals(serviceProvider) ? "未知" : serviceProvider);
         }
         return null;
     }
