@@ -20,4 +20,29 @@
 
 #### 如果你没有钱购买支持作者
 请点个star支持下也可
+
+#### API使用教程
+
+[![](https://jitpack.io/v/com.gitee.server-ct/ip2region.svg)](https://jitpack.io/#com.gitee.server-ct/ip2region)  
+要将本项目添加到您的构建中：
+
+步骤 1.将 JitPack 存储库添加到您的构建文件
+```
+<repositories>
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
+</repositories>
+```
+步骤 2.添加依赖项
+```
+<dependency>
+    <groupId>com.gitee.server-ct</groupId>
+    <artifactId>ip2region</artifactId>
+    <version>1.0.3</version>
+</dependency>
+```
+
+[API使用](https://gitee.com/server-ct/ip2region/blob/master/src/main/java/cn/handyplus/region/api/Ip2regionApi.java)
        
