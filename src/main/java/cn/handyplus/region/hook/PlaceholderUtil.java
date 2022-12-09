@@ -4,13 +4,11 @@ import cn.handyplus.lib.core.StrUtil;
 import cn.handyplus.region.Ip2region;
 import cn.handyplus.region.constants.IpConstants;
 import cn.handyplus.region.util.ConfigUtil;
+import cn.handyplus.region.util.SearcherUtil;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.OfflinePlayer;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * 变量扩展
@@ -50,7 +48,7 @@ public class PlaceholderUtil extends PlaceholderExpansion {
         if (StrUtil.isEmpty(region)) {
             return plugin.getConfig().getString(identifier, "未知");
         }
-        List<String> list = strToStrList(region);
+        List<String> list = SearcherUtil.strToStrList(region);
         String national = list.get(0);
         String provincial = list.get(2);
         String municipal = list.get(3);
@@ -79,14 +77,6 @@ public class PlaceholderUtil extends PlaceholderExpansion {
             return plugin.getConfig().getString(identifier, "0".equals(serviceProvider) ? "未知" : serviceProvider);
         }
         return null;
-    }
-
-    private List<String> strToStrList(String str) {
-        List<String> list = new ArrayList<>();
-        if (StrUtil.isEmpty(str)) {
-            return list;
-        }
-        return Arrays.stream(str.split("\\|")).map(String::trim).collect(Collectors.toList());
     }
 
     /**
