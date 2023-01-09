@@ -57,24 +57,32 @@ public class PlaceholderUtil extends PlaceholderExpansion {
         if ("region".equals(identifier)) {
             return plugin.getConfig().getString(identifier, region);
         }
+        String unknown = ConfigUtil.CONFIG.getString("unknown", "未知");
+        String local = ConfigUtil.CONFIG.getString("local", "内网IP");
         // %ip2region_national%
         if ("national".equals(identifier)) {
-            return plugin.getConfig().getString(identifier, "0".equals(national) ? "未知" : national);
+            return plugin.getConfig().getString(identifier, "0".equals(national) ? unknown : national);
         }
         boolean removeProvinceAndCity = ConfigUtil.CONFIG.getBoolean("removeProvinceAndCity");
         // %ip2region_provincial%
         if ("provincial".equals(identifier)) {
-            String provincialStr = "0".equals(provincial) ? "未知" : provincial;
+            String provincialStr = "0".equals(provincial) ? unknown : provincial;
+            if ("内网IP".equals(provincialStr)) {
+                provincialStr = local;
+            }
             return plugin.getConfig().getString(identifier, removeProvinceAndCity ? provincialStr.replace("省", "") : provincialStr);
         }
         // %ip2region_municipal%
         if ("municipal".equals(identifier)) {
-            String municipalStr = "0".equals(municipal) ? "未知" : municipal;
+            String municipalStr = "0".equals(municipal) ? unknown : municipal;
+            if ("内网IP".equals(municipalStr)) {
+                municipalStr = local;
+            }
             return plugin.getConfig().getString(identifier, removeProvinceAndCity ? municipalStr.replace("市", "") : municipalStr);
         }
         // %ip2region_serviceProvider%
         if ("serviceProvider".equals(identifier)) {
-            return plugin.getConfig().getString(identifier, "0".equals(serviceProvider) ? "未知" : serviceProvider);
+            return plugin.getConfig().getString(identifier, "0".equals(serviceProvider) ? unknown : serviceProvider);
         }
         return null;
     }
