@@ -4,6 +4,7 @@ import cn.handyplus.lib.api.MessageApi;
 import cn.handyplus.lib.command.IHandyCommandEvent;
 import cn.handyplus.lib.util.AssertUtil;
 import cn.handyplus.region.Ip2region;
+import cn.handyplus.region.constants.IpConstants;
 import cn.handyplus.region.service.Ip2regionService;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -35,6 +36,7 @@ public class HideCommand implements IHandyCommandEvent {
             @Override
             public void run() {
                 Ip2regionService.getInstance().update(player.getUniqueId().toString(), false);
+                IpConstants.PLAYER_SHOW_MAP.put(player.getUniqueId(), false);
                 MessageApi.sendMessage(player, "&a执行成功");
             }
         }.runTaskAsynchronously(Ip2region.getInstance());

@@ -42,6 +42,9 @@ public class PlayerJoinEventListener implements Listener {
                     enter.setPlayerUuid(player.getUniqueId().toString());
                     enter.setShowEnable(true);
                     Ip2regionService.getInstance().add(enter);
+                    IpConstants.PLAYER_SHOW_MAP.put(player.getUniqueId(), true);
+                } else {
+                    IpConstants.PLAYER_SHOW_MAP.put(player.getUniqueId(), ip2regionEnter.getShowEnable());
                 }
                 SearcherUtil.getPlayerRegion(player);
             }

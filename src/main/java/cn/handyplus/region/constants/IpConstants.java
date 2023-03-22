@@ -21,4 +21,11 @@ public abstract class IpConstants {
      */
     public static Map<UUID, String> PLAYER_REGION_MAP = new HashMap<>();
 
+    /**
+     * 是否显示
+     *
+     * @since 1.0.5
+     */
+    public static Map<UUID, Boolean> PLAYER_SHOW_MAP = new HashMap<>();
+
 }
