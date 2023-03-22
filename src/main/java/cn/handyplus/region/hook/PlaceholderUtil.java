@@ -3,6 +3,8 @@ package cn.handyplus.region.hook;
 import cn.handyplus.lib.core.StrUtil;
 import cn.handyplus.region.Ip2region;
 import cn.handyplus.region.constants.IpConstants;
+import cn.handyplus.region.enter.Ip2regionEnter;
+import cn.handyplus.region.service.Ip2regionService;
 import cn.handyplus.region.util.ConfigUtil;
 import cn.handyplus.region.util.SearcherUtil;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
@@ -53,12 +55,20 @@ public class PlaceholderUtil extends PlaceholderExpansion {
         String provincial = list.get(2);
         String municipal = list.get(3);
         String serviceProvider = list.get(4);
+
+        String unknown = ConfigUtil.CONFIG.getString("unknown", "未知");
+        String local = ConfigUtil.CONFIG.getString("local", "内网IP");
+
+        // 判断是否开启显示
+        Ip2regionEnter ip2regionEnter = Ip2regionService.getInstance().findByPlayerUuid(player.getUniqueId().toString());
+        boolean showEnable = ip2regionEnter.getShowEnable();
+        if (!showEnable) {
+            return plugin.getConfig().getString(identifier, unknown);
+        }
         // %ip2region_region%
         if ("region".equals(identifier)) {
             return plugin.getConfig().getString(identifier, region);
         }
-        String unknown = ConfigUtil.CONFIG.getString("unknown", "未知");
-        String local = ConfigUtil.CONFIG.getString("local", "内网IP");
         // %ip2region_national%
         if ("national".equals(identifier)) {
             return plugin.getConfig().getString(identifier, "0".equals(national) ? unknown : national);

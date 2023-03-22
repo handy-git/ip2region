@@ -5,8 +5,11 @@ import cn.handyplus.lib.constants.BaseConstants;
 import cn.handyplus.lib.util.HandyHttpUtil;
 import cn.handyplus.region.Ip2region;
 import cn.handyplus.region.constants.IpConstants;
+import cn.handyplus.region.enter.Ip2regionEnter;
+import cn.handyplus.region.service.Ip2regionService;
 import cn.handyplus.region.util.ConfigUtil;
 import cn.handyplus.region.util.SearcherUtil;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -28,10 +31,19 @@ public class PlayerJoinEventListener implements Listener {
      */
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
+        Player player = event.getPlayer();
         new BukkitRunnable() {
             @Override
             public void run() {
-                SearcherUtil.getPlayerRegion(event.getPlayer());
+                Ip2regionEnter ip2regionEnter = Ip2regionService.getInstance().findByPlayerUuid(player.getUniqueId().toString());
+                if (ip2regionEnter == null) {
+                    Ip2regionEnter enter = new Ip2regionEnter();
+                    enter.setPlayerName(player.getName());
+                    enter.setPlayerUuid(player.getUniqueId().toString());
+                    enter.setShowEnable(true);
+                    Ip2regionService.getInstance().add(enter);
+                }
+                SearcherUtil.getPlayerRegion(player);
             }
         }.runTaskAsynchronously(Ip2region.getInstance());
     }

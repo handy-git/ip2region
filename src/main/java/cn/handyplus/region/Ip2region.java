@@ -3,6 +3,7 @@ package cn.handyplus.region;
 import cn.handyplus.lib.InitApi;
 import cn.handyplus.lib.api.MessageApi;
 import cn.handyplus.lib.constants.BaseConstants;
+import cn.handyplus.lib.util.SqlManagerUtil;
 import cn.handyplus.region.constants.IpConstants;
 import cn.handyplus.region.hook.PlaceholderUtil;
 import cn.handyplus.region.util.ConfigUtil;
@@ -27,6 +28,7 @@ public class Ip2region extends JavaPlugin {
         new PlaceholderUtil(this).register();
         // 初始化
         initApi.initListener("cn.handyplus.region.listener")
+                .initCommand("cn.handyplus.region.command")
                 .addMetrics(16650)
                 .checkVersion(ConfigUtil.CONFIG.getBoolean(BaseConstants.IS_CHECK_UPDATE), IpConstants.PLUGIN_VERSION_URL);
 
@@ -36,6 +38,8 @@ public class Ip2region extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        // 关闭数据源
+        SqlManagerUtil.getInstance().close();
         MessageApi.sendConsoleMessage("§a已成功卸载！");
         MessageApi.sendConsoleMessage("§aAuthor:handy QQ群:1064982471");
     }
