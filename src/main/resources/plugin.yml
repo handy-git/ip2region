@@ -23,10 +23,10 @@ permissions:
     default: op
   ip2region.toggle:
     description: 切换是否显示
-    default: true
+    default: op
   ip2region.show:
     description: 切换显示
-    default: true
+    default: op
   ip2region.hide:
     description: 切换隐藏
-    default: true
+    default: op

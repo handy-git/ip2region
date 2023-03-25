@@ -29,6 +29,7 @@ public class Ip2region extends JavaPlugin {
         // 初始化
         initApi.initListener("cn.handyplus.region.listener")
                 .initCommand("cn.handyplus.region.command")
+                .enableSql("cn.handyplus.region.enter")
                 .addMetrics(16650)
                 .checkVersion(ConfigUtil.CONFIG.getBoolean(BaseConstants.IS_CHECK_UPDATE), IpConstants.PLUGIN_VERSION_URL);
 

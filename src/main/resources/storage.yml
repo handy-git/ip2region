@@ -1,0 +1,12 @@
+# 存储方法(MySQL,SQLite)请复制括号内的类型,不要自己写
+storage-method: SQLite
+# 选择mysql后必填
+MySQL:
+  Host: 127.0.0.1
+  Port: 3306
+  Database: mc
+  User: root
+  Password: root
+  UseSSL: false
+  # 额外参数-例如mysql8+如果报错可以添加 &allowPublicKeyRetrieval=true
+  param: '&allowPublicKeyRetrieval=true'
