@@ -44,5 +44,5 @@
 </dependency>
 ```
 
-[API使用](https://gitee.com/server-ct/ip2region/blob/master/src/main/java/cn/handyplus/region/api/Ip2regionApi.java)
+[javadoc](https://handy-git.github.io/ip2region/)
        
