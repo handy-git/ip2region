@@ -39,7 +39,8 @@ public class SearcherUtil {
     /**
      * 获取地址
      *
-     * @param player 玩家
+     * @param ip Ip
+     * @return 地址
      * @since 1.0.3
      */
     public static String getIpRegion(String ip) {

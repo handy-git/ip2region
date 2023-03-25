@@ -1,0 +1,11 @@
+cn.handyplus.region
+cn.handyplus.region.api
+cn.handyplus.region.command
+cn.handyplus.region.command.admin
+cn.handyplus.region.command.player
+cn.handyplus.region.constants
+cn.handyplus.region.enter
+cn.handyplus.region.hook
+cn.handyplus.region.listener
+cn.handyplus.region.service
+cn.handyplus.region.util
