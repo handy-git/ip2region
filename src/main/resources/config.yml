@@ -1,0 +1,12 @@
+# 是否开启更新提醒,建议开启
+isCheckUpdate: true
+
+# op登录时候是否发送更新提醒
+isCheckUpdateToOpMsg: true
+
+# 是否不显示 省和市后缀 开启后例如 江苏省 会显示为 江苏
+removeProvinceAndCity: false
+
+unknown: "未知"
+
+local: "内网IP"

@@ -1,0 +1,32 @@
+name: Ip2region
+main: cn.handyplus.region.Ip2region
+version: 1.0.5
+author: handy
+api-version: 1.13
+website: https://ricedoc.handyplus.cn
+depend: [ PlaceholderAPI ]
+description: 玩家地域查询
+commands:
+  ip2region:
+    description: 玩家地域查询
+    aliases: [ ip ]
+permissions:
+  ip2region.*:
+    description: 玩家地域查询
+    children:
+      ip2region.reload: true
+      ip2region.toggle: true
+      ip2region.show: true
+      ip2region.hide: true
+  ip2region.reload:
+    description: 重新加载配置
+    default: op
+  ip2region.toggle:
+    description: 切换是否显示
+    default: op
+  ip2region.show:
+    description: 切换显示
+    default: op
+  ip2region.hide:
+    description: 切换隐藏
+    default: op
