@@ -55,4 +55,9 @@
 ```
 
 [javadoc](https://handy-git.github.io/ip2region/)
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=handy-git/ip2region&type=Date)](https://star-history.com/#handy-git/ip2region&Date)
+
        
