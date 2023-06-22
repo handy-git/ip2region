@@ -14,7 +14,7 @@ public abstract class IpConstants {
     /**
      * 检查更新的版本url
      */
-    public final static String PLUGIN_VERSION_URL = "https://gitee.com/api/v5/repos/server-ct/ip2region/releases/latest";
+    public final static String PLUGIN_VERSION_URL = "https://api.github.com/repos/handy-git/ip2region/releases/latest";
 
     /**
      * 玩家地区
