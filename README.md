@@ -12,47 +12,28 @@
 | %ip2region_municipal%       | 市    | 上海市       | 
 | %ip2region_serviceProvider% | 运营商  | 电信        |
 
-
 ### 指令/权限
 
-| 指令         | 权限               | 作用     | 默认  |
-|------------|------------------|--------|-----|
-| /ip reload | ip2region.reload | 重载插件配置 | op  |
-| /ip toggle | ip2region.toggle | 切换是否显示 | op  |
-| /ip show   | ip2region.show   | 显示     | op  |
-| /ip hide   | ip2region.hide   | 隐藏     | op  |
+| 指令         | 权限               | 作用     | 默认 |
+|------------|------------------|--------|----|
+| /ip reload | ip2region.reload | 重载插件配置 | op |
+| /ip toggle | ip2region.toggle | 切换是否显示 | op |
+| /ip show   | ip2region.show   | 显示     | op |
+| /ip hide   | ip2region.hide   | 隐藏     | op |
 
 ### 开源说明
+
 本插件所用代码部分来自其他开源作品 [ip2region](https://github.com/lionsoul2014/ip2region)
 
 ### 爱发电购买
+
 [爱发电](https://afdian.net/item?plan_id=c1bf175c4a3111ed94bb52540025c377)
 
 #### 如果你没有钱购买支持作者
+
 请点个star支持下也可
 
 #### API使用教程
-
-[![](https://jitpack.io/v/com.gitee.server-ct/ip2region.svg)](https://jitpack.io/#com.gitee.server-ct/ip2region)  
-要将本项目添加到您的构建中：
-
-步骤 1.将 JitPack 存储库添加到您的构建文件
-```
-<repositories>
-    <repository>
-        <id>jitpack.io</id>
-        <url>https://jitpack.io</url>
-    </repository>
-</repositories>
-```
-步骤 2.添加依赖项
-```
-<dependency>
-    <groupId>com.gitee.server-ct</groupId>
-    <artifactId>ip2region</artifactId>
-    <version>1.0.3</version>
-</dependency>
-```
 
 [javadoc](https://handy-git.github.io/ip2region/)
 

@@ -1,6 +1,6 @@
 name: Ip2region
 main: cn.handyplus.region.Ip2region
-version: 1.0.5
+version: 1.0.6
 author: handy
 api-version: 1.13
 website: https://ricedoc.handyplus.cn
