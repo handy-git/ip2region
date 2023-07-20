@@ -1,9 +1,9 @@
 package cn.handyplus.region;
 
 import cn.handyplus.lib.InitApi;
-import cn.handyplus.lib.api.MessageApi;
 import cn.handyplus.lib.constants.BaseConstants;
-import cn.handyplus.lib.util.SqlManagerUtil;
+import cn.handyplus.lib.db.SqlManagerUtil;
+import cn.handyplus.lib.util.MessageUtil;
 import cn.handyplus.region.constants.IpConstants;
 import cn.handyplus.region.hook.PlaceholderUtil;
 import cn.handyplus.region.util.ConfigUtil;
@@ -33,16 +33,14 @@ public class Ip2region extends JavaPlugin {
                 .addMetrics(16650)
                 .checkVersion(ConfigUtil.CONFIG.getBoolean(BaseConstants.IS_CHECK_UPDATE), IpConstants.PLUGIN_VERSION_URL);
 
-        MessageApi.sendConsoleMessage("§a已成功载入服务器！");
-        MessageApi.sendConsoleMessage("§aAuthor:handy QQ群:1064982471");
+        MessageUtil.sendConsoleMessage("§a已成功载入服务器！");
+        MessageUtil.sendConsoleMessage("§aAuthor:handy MCBBS: https://www.mcbbs.net/thread-1390432-1-1.html");
     }
 
     @Override
     public void onDisable() {
         // 关闭数据源
         SqlManagerUtil.getInstance().close();
-        MessageApi.sendConsoleMessage("§a已成功卸载！");
-        MessageApi.sendConsoleMessage("§aAuthor:handy QQ群:1064982471");
     }
 
     public static Ip2region getInstance() {

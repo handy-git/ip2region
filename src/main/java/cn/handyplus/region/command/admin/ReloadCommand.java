@@ -1,7 +1,7 @@
 package cn.handyplus.region.command.admin;
 
-import cn.handyplus.lib.api.MessageApi;
 import cn.handyplus.lib.command.IHandyCommandEvent;
+import cn.handyplus.lib.util.MessageUtil;
 import cn.handyplus.region.Ip2region;
 import cn.handyplus.region.util.ConfigUtil;
 import org.bukkit.command.Command;
@@ -31,7 +31,7 @@ public class ReloadCommand implements IHandyCommandEvent {
             @Override
             public void run() {
                 ConfigUtil.init();
-                MessageApi.sendMessage(sender, "&a重载成功");
+                MessageUtil.sendMessage(sender, "&a重载成功");
             }
         }.runTaskAsynchronously(Ip2region.getInstance());
     }

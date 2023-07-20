@@ -1,8 +1,8 @@
 package cn.handyplus.region.command.player;
 
-import cn.handyplus.lib.api.MessageApi;
 import cn.handyplus.lib.command.IHandyCommandEvent;
 import cn.handyplus.lib.util.AssertUtil;
+import cn.handyplus.lib.util.MessageUtil;
 import cn.handyplus.region.Ip2region;
 import cn.handyplus.region.constants.IpConstants;
 import cn.handyplus.region.service.Ip2regionService;
@@ -37,7 +37,7 @@ public class ShowCommand implements IHandyCommandEvent {
             public void run() {
                 Ip2regionService.getInstance().update(player.getUniqueId().toString(), true);
                 IpConstants.PLAYER_SHOW_MAP.put(player.getUniqueId(), true);
-                MessageApi.sendMessage(player, "&a执行成功");
+                MessageUtil.sendMessage(player, "&a执行成功");
             }
         }.runTaskAsynchronously(Ip2region.getInstance());
     }
