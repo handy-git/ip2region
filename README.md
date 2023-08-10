@@ -4,13 +4,14 @@
 
 为《我的世界》(Minecraft)提供国家，省，市，运营商papi变量
 
-| 变量名                         | 显示内容 | 示例        |
-|-----------------------------|------|-----------|
-| %ip2region_region%          | 总区域  | 中国上海上海市电信 | 
-| %ip2region_national%        | 国家   | 中国        | 
-| %ip2region_provincial%      | 省    | 上海        | 
-| %ip2region_municipal%       | 市    | 上海市       | 
-| %ip2region_serviceProvider% | 运营商  | 电信        |
+| 变量名                         | 显示内容           | 示例        |
+|-----------------------------|----------------|-----------|
+| %ip2region_region%          | 总区域            | 中国上海上海市电信 | 
+| %ip2region_national%        | 国家             | 中国        | 
+| %ip2region_provincial%      | 省              | 上海        | 
+| %ip2region_municipal%       | 市              | 上海市       | 
+| %ip2region_serviceProvider% | 运营商            | 电信        |
+| %ip2region_ip%              | 玩家当前ip(1.0.8+) | 127.0.0.1 |
 
 ### 指令/权限
 
@@ -33,7 +34,29 @@
 
 请点个star支持下也可
 
-#### API使用教程
+### API使用教程
+
+* 第一步
+
+```
+<repositories>
+    <repository>
+        <id>handy-maven</id>
+        <url>https://maven.handyplus.cn/repository/maven-public/</url>
+    </repository>
+</repositories>
+```
+
+* 第二步
+
+```
+<dependency>
+  <groupId>cn.handyplus.region</groupId>
+  <artifactId>ip2region</artifactId>
+  <version>1.0.8</version>
+  <scope>provided</scope>
+</dependency>
+```
 
 [javadoc](https://handy-git.github.io/ip2region/)
 
