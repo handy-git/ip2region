@@ -3,6 +3,8 @@ package cn.handyplus.region.service;
 import cn.handyplus.lib.db.Db;
 import cn.handyplus.region.enter.Ip2regionEnter;
 
+import java.util.Optional;
+
 /**
  * 玩家IP数据显示记录
  *
@@ -35,7 +37,7 @@ public class Ip2regionService {
      * @param playerUuid 玩家uid
      * @return 显示记录
      */
-    public Ip2regionEnter findByPlayerUuid(String playerUuid) {
+    public Optional<Ip2regionEnter> findByPlayerUuid(String playerUuid) {
         Db<Ip2regionEnter> use = Db.use(Ip2regionEnter.class);
         use.where().eq(Ip2regionEnter::getPlayerUuid, playerUuid);
         return use.execution().selectOne();

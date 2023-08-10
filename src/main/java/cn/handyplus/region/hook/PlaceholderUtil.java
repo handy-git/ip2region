@@ -44,9 +44,17 @@ public class PlaceholderUtil extends PlaceholderExpansion {
         if (player == null) {
             return null;
         }
+        // %ip2region_ip%
+        if ("ip".equals(identifier)) {
+            if (player.getPlayer() == null) {
+                return null;
+            }
+            return player.getPlayer().getAddress().getAddress().getHostAddress();
+        }
+
         String region = IpConstants.PLAYER_REGION_MAP.get(player.getUniqueId());
         if (StrUtil.isEmpty(region)) {
-            return plugin.getConfig().getString(identifier, "未知");
+            return "未知";
         }
         List<String> list = SearcherUtil.strToStrList(region);
         String national = list.get(0);
@@ -64,11 +72,11 @@ public class PlaceholderUtil extends PlaceholderExpansion {
         }
         // %ip2region_region%
         if ("region".equals(identifier)) {
-            return plugin.getConfig().getString(identifier, region);
+            return region;
         }
         // %ip2region_national%
         if ("national".equals(identifier)) {
-            return plugin.getConfig().getString(identifier, "0".equals(national) ? unknown : national);
+            return "0".equals(national) ? unknown : national;
         }
         boolean removeProvinceAndCity = ConfigUtil.CONFIG.getBoolean("removeProvinceAndCity");
         // %ip2region_provincial%
@@ -77,7 +85,7 @@ public class PlaceholderUtil extends PlaceholderExpansion {
             if ("内网IP".equals(provincialStr)) {
                 provincialStr = local;
             }
-            return plugin.getConfig().getString(identifier, removeProvinceAndCity ? provincialStr.replace("省", "") : provincialStr);
+            return removeProvinceAndCity ? provincialStr.replace("省", "") : provincialStr;
         }
         // %ip2region_municipal%
         if ("municipal".equals(identifier)) {
@@ -85,11 +93,11 @@ public class PlaceholderUtil extends PlaceholderExpansion {
             if ("内网IP".equals(municipalStr)) {
                 municipalStr = local;
             }
-            return plugin.getConfig().getString(identifier, removeProvinceAndCity ? municipalStr.replace("市", "") : municipalStr);
+            return removeProvinceAndCity ? municipalStr.replace("市", "") : municipalStr;
         }
         // %ip2region_serviceProvider%
         if ("serviceProvider".equals(identifier)) {
-            return plugin.getConfig().getString(identifier, "0".equals(serviceProvider) ? unknown : serviceProvider);
+            return "0".equals(serviceProvider) ? unknown : serviceProvider;
         }
         return null;
     }

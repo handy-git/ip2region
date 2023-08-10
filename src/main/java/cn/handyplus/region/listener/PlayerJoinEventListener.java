@@ -16,6 +16,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.Optional;
+
 /**
  * 登录事件
  *
@@ -35,8 +37,8 @@ public class PlayerJoinEventListener implements Listener {
         new BukkitRunnable() {
             @Override
             public void run() {
-                Ip2regionEnter ip2regionEnter = Ip2regionService.getInstance().findByPlayerUuid(player.getUniqueId().toString());
-                if (ip2regionEnter == null) {
+                Optional<Ip2regionEnter> ip2regionEnterOptional = Ip2regionService.getInstance().findByPlayerUuid(player.getUniqueId().toString());
+                if (!ip2regionEnterOptional.isPresent()) {
                     Ip2regionEnter enter = new Ip2regionEnter();
                     enter.setPlayerName(player.getName());
                     enter.setPlayerUuid(player.getUniqueId().toString());
@@ -44,6 +46,7 @@ public class PlayerJoinEventListener implements Listener {
                     Ip2regionService.getInstance().add(enter);
                     IpConstants.PLAYER_SHOW_MAP.put(player.getUniqueId(), true);
                 } else {
+                    Ip2regionEnter ip2regionEnter = ip2regionEnterOptional.get();
                     IpConstants.PLAYER_SHOW_MAP.put(player.getUniqueId(), ip2regionEnter.getShowEnable());
                 }
                 SearcherUtil.getPlayerRegion(player);

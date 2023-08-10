@@ -12,6 +12,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.Optional;
+
 /**
  * 切换
  *
@@ -36,7 +38,11 @@ public class ToggleCommand implements IHandyCommandEvent {
         new BukkitRunnable() {
             @Override
             public void run() {
-                Ip2regionEnter ip2regionEnter = Ip2regionService.getInstance().findByPlayerUuid(player.getUniqueId().toString());
+                Optional<Ip2regionEnter> ip2regionEnterOptional = Ip2regionService.getInstance().findByPlayerUuid(player.getUniqueId().toString());
+                if (!ip2regionEnterOptional.isPresent()) {
+                    return;
+                }
+                Ip2regionEnter ip2regionEnter = ip2regionEnterOptional.get();
                 Ip2regionService.getInstance().update(player.getUniqueId().toString(), !ip2regionEnter.getShowEnable());
                 IpConstants.PLAYER_SHOW_MAP.put(player.getUniqueId(), !ip2regionEnter.getShowEnable());
                 MessageUtil.sendMessage(player, "&a执行成功");
