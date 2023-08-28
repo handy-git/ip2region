@@ -2,6 +2,7 @@ package cn.handyplus.region.command.player;
 
 import cn.handyplus.lib.command.IHandyCommandEvent;
 import cn.handyplus.lib.util.AssertUtil;
+import cn.handyplus.lib.util.BaseUtil;
 import cn.handyplus.lib.util.MessageUtil;
 import cn.handyplus.region.Ip2region;
 import cn.handyplus.region.constants.IpConstants;
@@ -34,7 +35,7 @@ public class ToggleCommand implements IHandyCommandEvent {
     @Override
     public void onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         // 是否为玩家
-        Player player = AssertUtil.notPlayer(sender, "&4该命令只能玩家执行");
+        Player player = AssertUtil.notPlayer(sender, BaseUtil.getLangMsg("noPlayerFailureMsg"));
         new BukkitRunnable() {
             @Override
             public void run() {
@@ -45,7 +46,7 @@ public class ToggleCommand implements IHandyCommandEvent {
                 Ip2regionEnter ip2regionEnter = ip2regionEnterOptional.get();
                 Ip2regionService.getInstance().update(player.getUniqueId().toString(), !ip2regionEnter.getShowEnable());
                 IpConstants.PLAYER_SHOW_MAP.put(player.getUniqueId(), !ip2regionEnter.getShowEnable());
-                MessageUtil.sendMessage(player, "&a执行成功");
+                MessageUtil.sendMessage(player, BaseUtil.getLangMsg("toggleMsg"));
             }
         }.runTaskAsynchronously(Ip2region.getInstance());
     }

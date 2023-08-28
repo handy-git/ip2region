@@ -1,0 +1,11 @@
+# 没权限时候提醒
+noPermission: "&4你没有权限执行该命令"
+
+# 重载插件提醒
+reloadMsg: "&a插件重载完成"
+
+# 一些提醒
+noPlayerFailureMsg: "&8[&c✘&8] &7该命令只能玩家执行"
+hideMsg: "&8[&a✔&8] &a隐藏成功"
+showMsg: "&8[&a✔&8] &a显示成功"
+toggleMsg: "&8[&a✔&8] &a切换成功"

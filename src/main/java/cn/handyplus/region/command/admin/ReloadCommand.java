@@ -31,7 +31,7 @@ public class ReloadCommand implements IHandyCommandEvent {
             @Override
             public void run() {
                 ConfigUtil.init();
-                MessageUtil.sendMessage(sender, "&a重载成功");
+                MessageUtil.sendMessage(sender, ConfigUtil.LANG_CONFIG.getString("reloadMsg"));
             }
         }.runTaskAsynchronously(Ip2region.getInstance());
     }

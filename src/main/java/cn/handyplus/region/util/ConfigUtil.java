@@ -13,7 +13,7 @@ import java.io.File;
  * @author handy
  */
 public class ConfigUtil {
-    public static FileConfiguration CONFIG;
+    public static FileConfiguration CONFIG, LANG_CONFIG;
     public static String DB_PATH;
 
     /**
@@ -29,6 +29,8 @@ public class ConfigUtil {
             file = new File(InitApi.PLUGIN.getDataFolder(), "ip2region.xdb");
         }
         DB_PATH = file.getPath();
+        // 加载语言文件
+        LANG_CONFIG = HandyConfigUtil.loadLangConfig(CONFIG.getString("language", "zh_CN"));
     }
 
 }

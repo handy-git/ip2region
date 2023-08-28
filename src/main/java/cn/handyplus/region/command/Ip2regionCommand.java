@@ -26,11 +26,11 @@ public class Ip2regionCommand implements TabExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         // 判断指令是否正确
         if (args.length < 1) {
-            return sendHelp(sender);
+            return true;
         }
         boolean rst = HandyCommandFactory.getInstance().onCommand(sender, cmd, label, args, BaseUtil.getLangMsg("noPermission"));
         if (!rst) {
-            return sendHelp(sender);
+            return true;
         }
         return true;
     }
@@ -50,23 +50,6 @@ public class Ip2regionCommand implements TabExecutor {
         StringUtil.copyPartialMatches(args[args.length - 1].toLowerCase(), commands, completions);
         Collections.sort(completions);
         return completions;
-    }
-
-    /**
-     * 发送帮助
-     *
-     * @param sender 发送人
-     * @return 消息
-     */
-    private Boolean sendHelp(CommandSender sender) {
-        if (!sender.hasPermission(PERMISSION)) {
-            return true;
-        }
-        List<String> helps = new ArrayList<>();
-        for (String help : helps) {
-            sender.sendMessage(BaseUtil.replaceChatColor(help));
-        }
-        return true;
     }
 
 }
