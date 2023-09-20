@@ -22,12 +22,13 @@ public class SearcherUtil {
      *
      * @param player 玩家
      */
-    public static void getPlayerRegion(Player player) {
+    protected static void getPlayerRegion(Player player) {
         try {
             // 1、创建 searcher 对象
             Searcher searcher = Searcher.newWithFileOnly(ConfigUtil.DB_PATH);
             // 2、查询
             String ip = player.getAddress().getAddress().getHostAddress();
+            ip = ConfigUtil.CONFIG.getString("testIp4", ip);
             String region = searcher.search(ip);
             IpConstants.PLAYER_REGION_MAP.put(player.getUniqueId(), region);
             // 3、关闭资源

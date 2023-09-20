@@ -8,6 +8,7 @@ import cn.handyplus.region.constants.IpConstants;
 import cn.handyplus.region.enter.Ip2regionEnter;
 import cn.handyplus.region.service.Ip2regionService;
 import cn.handyplus.region.util.ConfigUtil;
+import cn.handyplus.region.util.IpUtil;
 import cn.handyplus.region.util.SearcherUtil;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -49,7 +50,7 @@ public class PlayerJoinEventListener implements Listener {
                     Ip2regionEnter ip2regionEnter = ip2regionEnterOptional.get();
                     IpConstants.PLAYER_SHOW_MAP.put(player.getUniqueId(), ip2regionEnter.getShowEnable());
                 }
-                SearcherUtil.getPlayerRegion(player);
+                IpUtil.getPlayerRegion(player);
             }
         }.runTaskAsynchronously(Ip2region.getInstance());
     }

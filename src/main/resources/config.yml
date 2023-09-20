@@ -13,3 +13,13 @@ removeProvinceAndCity: false
 unknown: "未知"
 
 local: "内网IP"
+
+# 数据来源 ( offline 或 ipPlus360 )
+# offline 本地数据源模式(百分之99.9数据准确性)
+# ipPlus360 在线api模式(准确度差不多,支持ipv6,必需先购买key填下面)
+dataSource: offline
+
+# ipv4在线归属地(有免费额度) 购买地址: https://mall.ipplus360.com/pros/IPVFourGeoAPI
+ipPlus360Ipv4Key: 123456
+# ipv6在线归属地 购买地址: https://mall.ipplus360.com/pros/IPGeoAPI
+ipPlus360Ipv6Key: 123456
