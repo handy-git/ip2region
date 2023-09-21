@@ -42,4 +42,11 @@ public abstract class IpConstants {
      */
     public final static String IP_PLUS_360_IPV6 = "https://api.ipplus360.com/ip/geo/v1/ipv6/district/";
 
+    /**
+     * ipApi api地址
+     *
+     * @since 1.1.0
+     */
+    public final static String IP_API_IPV4 = "http://ip-api.com/json/";
+
 }

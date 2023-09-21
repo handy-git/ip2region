@@ -14,12 +14,13 @@ unknown: "未知"
 
 local: "内网IP"
 
-# 数据来源 ( offline 或 ipPlus360 )
-# offline 本地数据源模式(百分之99.9数据准确性)
-# ipPlus360 在线api模式(准确度差不多,支持ipv6,必需先购买key填下面)
+# 数据来源 ( offline 或 ipPlus360 或 ipApi )
+# offline 本地数据源模式(只支持ipv4 百分之99.9数据准确性)
+# ipPlus360 在线api模式(准确度差不多,支持ipv4/ipv6,必需先购买key填下面)
+# ipApi 在线api模式(支持ipv4/ipv6 免费 限制 每分钟请求 45 次,也就是一分钟服务器同时进45人 官网:https://ip-api.com/)
 dataSource: offline
 
-# ipv4在线归属地(有免费额度) 购买地址: https://mall.ipplus360.com/pros/IPVFourGeoAPI
+# ipPlus360模式 ipv4在线归属地(有试用额度) 购买地址: https://mall.ipplus360.com/pros/IPVFourGeoAPI
 ipPlus360Ipv4Key: 123456
-# ipv6在线归属地 购买地址: https://mall.ipplus360.com/pros/IPGeoAPI
+# ipPlus360模式 ipv6在线归属地 购买地址: https://mall.ipplus360.com/pros/IPGeoAPI
 ipPlus360Ipv6Key: 123456

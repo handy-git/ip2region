@@ -13,7 +13,7 @@ import java.net.Inet6Address;
 import java.net.InetAddress;
 
 /**
- * 对接IpPlus360 api
+ * 对接 ipPlus360.com api
  *
  * @author handy
  * @since 1.1.0
@@ -58,25 +58,15 @@ public class IpPlus360Util {
             }
             IpPlus360Param ipPlus360Param = JsonUtil.toBean(json, IpPlus360Param.class);
             // 转换异常
-            if (!"Success".equals(ipPlus360Param.getCode())) {
+            if (!"Success".equalsIgnoreCase(ipPlus360Param.getCode())) {
                 MessageUtil.sendConsoleMessage(ipPlus360Param.getMsg());
                 return;
             }
             IpPlus360Param.IpPlus360ParamData data = ipPlus360Param.getData();
-            String region = getStr(data.getCountry()) + "|" + getStr(data.getContinent()) + "|" + getStr(data.getProv()) + "|" + getStr(data.getCity()) + "|" + getStr(data.getOwner());
+            String region = IpUtil.getStr(data.getCountry()) + "|" + IpUtil.getStr(data.getContinent()) + "|" + IpUtil.getStr(data.getProv()) + "|" + IpUtil.getStr(data.getCity()) + "|" + IpUtil.getStr(data.getOwner());
             IpConstants.PLAYER_REGION_MAP.put(player.getUniqueId(), region);
         } catch (Exception ignored) {
         }
-    }
-
-    /**
-     * 兼容默认值
-     *
-     * @param str 值
-     * @return 默认值
-     */
-    private static String getStr(String str) {
-        return StrUtil.isNotEmpty(str) ? str : "0";
     }
 
 }
