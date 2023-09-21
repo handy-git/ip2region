@@ -24,7 +24,7 @@ public class SearcherUtil {
      */
     protected static void getPlayerRegion(Player player) {
         String ip = player.getAddress().getAddress().getHostAddress();
-        ip = ConfigUtil.CONFIG.getString("testIp4", ip);
+        ip = ConfigUtil.CONFIG.getString("testIp", ip);
         String region = getIpRegion(ip);
         IpConstants.PLAYER_REGION_MAP.put(player.getUniqueId(), region);
     }
