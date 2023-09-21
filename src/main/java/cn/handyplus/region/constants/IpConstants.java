@@ -28,4 +28,25 @@ public abstract class IpConstants {
      */
     public static Map<UUID, Boolean> PLAYER_SHOW_MAP = new HashMap<>();
 
+    /**
+     * ipPlus360 ipv4 api地址
+     *
+     * @since 1.1.0
+     */
+    public final static String IP_PLUS_360_IPV4 = "https://api.ipplus360.com/ip/geo/v1/city/";
+
+    /**
+     * ipPlus360 ipv6 api地址
+     *
+     * @since 1.1.0
+     */
+    public final static String IP_PLUS_360_IPV6 = "https://api.ipplus360.com/ip/geo/v1/ipv6/";
+
+    /**
+     * ipApi api地址
+     *
+     * @since 1.1.0
+     */
+    public final static String IP_API_IPV4 = "http://ip-api.com/json/";
+
 }

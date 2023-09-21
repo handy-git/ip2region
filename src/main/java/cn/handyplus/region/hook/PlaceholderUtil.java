@@ -61,7 +61,10 @@ public class PlaceholderUtil extends PlaceholderExpansion {
         String provincial = list.get(2);
         String municipal = list.get(3);
         String serviceProvider = list.get(4);
-
+        String district = "0";
+        if (list.size() > 5) {
+            district = list.get(5);
+        }
         String unknown = ConfigUtil.CONFIG.getString("unknown", "未知");
         String local = ConfigUtil.CONFIG.getString("local", "内网IP");
 
@@ -98,6 +101,10 @@ public class PlaceholderUtil extends PlaceholderExpansion {
         // %ip2region_serviceProvider%
         if ("serviceProvider".equals(identifier)) {
             return "0".equals(serviceProvider) ? unknown : serviceProvider;
+        }
+        // %ip2region_district%
+        if ("district".equals(identifier)) {
+            return "0".equals(district) ? unknown : district;
         }
         return null;
     }
