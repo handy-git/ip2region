@@ -35,6 +35,10 @@ public class IpPlus360Param {
          * 市
          */
         private String city;
+        /**
+         * 区县
+         */
+        private String district;
     }
 
 }

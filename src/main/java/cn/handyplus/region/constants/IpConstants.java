@@ -40,7 +40,7 @@ public abstract class IpConstants {
      *
      * @since 1.1.0
      */
-    public final static String IP_PLUS_360_IPV6 = "https://api.ipplus360.com/ip/geo/v1/ipv6/district/";
+    public final static String IP_PLUS_360_IPV6 = "https://api.ipplus360.com/ip/geo/v1/ipv6/";
 
     /**
      * ipApi api地址

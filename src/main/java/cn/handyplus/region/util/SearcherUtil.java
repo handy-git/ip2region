@@ -23,18 +23,10 @@ public class SearcherUtil {
      * @param player 玩家
      */
     protected static void getPlayerRegion(Player player) {
-        try {
-            // 1、创建 searcher 对象
-            Searcher searcher = Searcher.newWithFileOnly(ConfigUtil.DB_PATH);
-            // 2、查询
-            String ip = player.getAddress().getAddress().getHostAddress();
-            ip = ConfigUtil.CONFIG.getString("testIp4", ip);
-            String region = searcher.search(ip);
-            IpConstants.PLAYER_REGION_MAP.put(player.getUniqueId(), region);
-            // 3、关闭资源
-            searcher.close();
-        } catch (Exception ignored) {
-        }
+        String ip = player.getAddress().getAddress().getHostAddress();
+        ip = ConfigUtil.CONFIG.getString("testIp4", ip);
+        String region = getIpRegion(ip);
+        IpConstants.PLAYER_REGION_MAP.put(player.getUniqueId(), region);
     }
 
     /**

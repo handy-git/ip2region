@@ -43,14 +43,16 @@ public class IpPlus360Util {
                     return;
                 }
                 ip = StrUtil.isNotEmpty(testIp4) ? testIp4 : ip;
-                json = HttpUtil.get(IpConstants.IP_PLUS_360_IPV4 + "?key=" + ipPlus360Ipv4Key + "&ip=" + ip + "&coordsys=WGS84");
+                String ipPlus360Ipv4Url = ConfigUtil.CONFIG.getString("ipPlus360Ipv4Url", IpConstants.IP_PLUS_360_IPV4);
+                json = HttpUtil.get(ipPlus360Ipv4Url + "?key=" + ipPlus360Ipv4Key + "&ip=" + ip + "&coordsys=WGS84");
             } else if (StrUtil.isNotEmpty(testIp6) || inetAddress instanceof Inet6Address) {
                 // 未填写key
                 if ("123456".equals(ipPlus360Ipv6Key)) {
                     return;
                 }
                 ip = StrUtil.isNotEmpty(testIp6) ? testIp6 : ip;
-                json = HttpUtil.get(IpConstants.IP_PLUS_360_IPV6 + "?key=" + ipPlus360Ipv6Key + "&ip=" + ip + "&coordsys=WGS84");
+                String ipPlus360Ipv6Url = ConfigUtil.CONFIG.getString("ipPlus360Ipv6Url", IpConstants.IP_PLUS_360_IPV6);
+                json = HttpUtil.get(ipPlus360Ipv6Url + "?key=" + ipPlus360Ipv6Key + "&ip=" + ip + "&coordsys=WGS84");
             }
             // 未获取到数据
             if (StrUtil.isEmpty(json)) {
@@ -63,7 +65,7 @@ public class IpPlus360Util {
                 return;
             }
             IpPlus360Param.IpPlus360ParamData data = ipPlus360Param.getData();
-            String region = IpUtil.getStr(data.getCountry()) + "|" + IpUtil.getStr(data.getContinent()) + "|" + IpUtil.getStr(data.getProv()) + "|" + IpUtil.getStr(data.getCity()) + "|" + IpUtil.getStr(data.getOwner());
+            String region = IpUtil.getStr(data.getCountry()) + "|" + IpUtil.getStr(data.getContinent()) + "|" + IpUtil.getStr(data.getProv()) + "|" + IpUtil.getStr(data.getCity()) + "|" + IpUtil.getStr(data.getOwner() + "|" + IpUtil.getStr(data.getDistrict()));
             IpConstants.PLAYER_REGION_MAP.put(player.getUniqueId(), region);
         } catch (Exception ignored) {
         }
