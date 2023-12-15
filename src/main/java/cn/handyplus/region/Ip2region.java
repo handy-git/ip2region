@@ -24,6 +24,7 @@ public class Ip2region extends JavaPlugin {
         InitApi initApi = InitApi.getInstance(this);
         // 加载配置
         ConfigUtil.init();
+
         // 加载变量
         new PlaceholderUtil(this).register();
         // 初始化

@@ -2,20 +2,18 @@ package cn.handyplus.region.listener;
 
 import cn.handyplus.lib.annotation.HandyListener;
 import cn.handyplus.lib.constants.BaseConstants;
+import cn.handyplus.lib.expand.adapter.HandySchedulerUtil;
 import cn.handyplus.lib.util.HandyHttpUtil;
-import cn.handyplus.region.Ip2region;
 import cn.handyplus.region.constants.IpConstants;
 import cn.handyplus.region.enter.Ip2regionEnter;
 import cn.handyplus.region.service.Ip2regionService;
 import cn.handyplus.region.util.ConfigUtil;
 import cn.handyplus.region.util.IpUtil;
-import cn.handyplus.region.util.SearcherUtil;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.Optional;
 
@@ -35,24 +33,21 @@ public class PlayerJoinEventListener implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                Optional<Ip2regionEnter> ip2regionEnterOptional = Ip2regionService.getInstance().findByPlayerUuid(player.getUniqueId().toString());
-                if (!ip2regionEnterOptional.isPresent()) {
-                    Ip2regionEnter enter = new Ip2regionEnter();
-                    enter.setPlayerName(player.getName());
-                    enter.setPlayerUuid(player.getUniqueId().toString());
-                    enter.setShowEnable(true);
-                    Ip2regionService.getInstance().add(enter);
-                    IpConstants.PLAYER_SHOW_MAP.put(player.getUniqueId(), true);
-                } else {
-                    Ip2regionEnter ip2regionEnter = ip2regionEnterOptional.get();
-                    IpConstants.PLAYER_SHOW_MAP.put(player.getUniqueId(), ip2regionEnter.getShowEnable());
-                }
-                IpUtil.getPlayerRegion(player);
+        HandySchedulerUtil.runTaskAsynchronously(() -> {
+            Optional<Ip2regionEnter> ip2regionEnterOptional = Ip2regionService.getInstance().findByPlayerUuid(player.getUniqueId().toString());
+            if (!ip2regionEnterOptional.isPresent()) {
+                Ip2regionEnter enter = new Ip2regionEnter();
+                enter.setPlayerName(player.getName());
+                enter.setPlayerUuid(player.getUniqueId().toString());
+                enter.setShowEnable(true);
+                Ip2regionService.getInstance().add(enter);
+                IpConstants.PLAYER_SHOW_MAP.put(player.getUniqueId(), true);
+            } else {
+                Ip2regionEnter ip2regionEnter = ip2regionEnterOptional.get();
+                IpConstants.PLAYER_SHOW_MAP.put(player.getUniqueId(), ip2regionEnter.getShowEnable());
             }
-        }.runTaskAsynchronously(Ip2region.getInstance());
+            IpUtil.getPlayerRegion(player);
+        });
     }
 
     /**

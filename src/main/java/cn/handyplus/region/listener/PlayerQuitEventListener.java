@@ -1,14 +1,13 @@
 package cn.handyplus.region.listener;
 
 import cn.handyplus.lib.annotation.HandyListener;
-import cn.handyplus.region.Ip2region;
+import cn.handyplus.lib.expand.adapter.HandySchedulerUtil;
 import cn.handyplus.region.constants.IpConstants;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-import org.bukkit.scheduler.BukkitRunnable;
 
 /**
  * 玩家被服务器踢出事件
@@ -44,12 +43,7 @@ public class PlayerQuitEventListener implements Listener {
      * @param player 事件
      */
     private void removeCache(Player player) {
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                IpConstants.PLAYER_REGION_MAP.remove(player.getUniqueId());
-            }
-        }.runTaskAsynchronously(Ip2region.getInstance());
+        HandySchedulerUtil.runTaskAsynchronously(() -> IpConstants.PLAYER_REGION_MAP.remove(player.getUniqueId()));
     }
 
 }

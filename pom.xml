@@ -6,13 +6,13 @@
 
     <groupId>cn.handyplus.region</groupId>
     <artifactId>ip2region</artifactId>
-    <version>1.1.0</version>
+    <version>1.1.1</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spigot-api.vesion>1.20.1-R0.1-SNAPSHOT</spigot-api.vesion>
-        <lombok.version>1.18.28</lombok.version>
-        <HandyLib.version>3.7.4</HandyLib.version>
+        <spigot-api.vesion>1.20.2-R0.1-SNAPSHOT</spigot-api.vesion>
+        <lombok.version>1.18.30</lombok.version>
+        <HandyLib.version>3.7.7</HandyLib.version>
         <ip2region.version>2.7.0</ip2region.version>
         <placeholderapi.version>2.10.5</placeholderapi.version>
     </properties>
