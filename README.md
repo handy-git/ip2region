@@ -36,28 +36,6 @@
 
 ### API使用教程
 
-* 第一步
-
-```
-<repositories>
-    <repository>
-        <id>handy-maven</id>
-        <url>https://maven.handyplus.cn/repository/maven-public/</url>
-    </repository>
-</repositories>
-```
-
-* 第二步
-
-```
-<dependency>
-  <groupId>cn.handyplus.region</groupId>
-  <artifactId>ip2region</artifactId>
-  <version>1.0.8</version>
-  <scope>provided</scope>
-</dependency>
-```
-
 [javadoc](https://handy-git.github.io/ip2region/)
 
 ## Star History
