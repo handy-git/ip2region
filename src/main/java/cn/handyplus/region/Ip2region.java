@@ -35,7 +35,7 @@ public class Ip2region extends JavaPlugin {
                 .checkVersion(ConfigUtil.CONFIG.getBoolean(BaseConstants.IS_CHECK_UPDATE), IpConstants.PLUGIN_VERSION_URL);
 
         MessageUtil.sendConsoleMessage("§a已成功载入服务器！");
-        MessageUtil.sendConsoleMessage("§aAuthor:handy MCBBS: https://www.mcbbs.net/thread-1390432-1-1.html");
+        MessageUtil.sendConsoleMessage("§aAuthor:handy 使用文档: https://ricedoc.handyplus.cn/wiki/ip2region/README/");
     }
 
     @Override

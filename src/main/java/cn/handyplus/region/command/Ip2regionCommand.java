@@ -1,7 +1,7 @@
 package cn.handyplus.region.command;
 
 import cn.handyplus.lib.annotation.HandyCommand;
-import cn.handyplus.lib.command.HandyCommandFactory;
+import cn.handyplus.lib.command.HandyCommandWrapper;
 import cn.handyplus.lib.util.BaseUtil;
 import cn.handyplus.region.constants.TabListEnum;
 import org.bukkit.command.Command;
@@ -28,7 +28,7 @@ public class Ip2regionCommand implements TabExecutor {
         if (args.length < 1) {
             return true;
         }
-        HandyCommandFactory.getInstance().onCommand(sender, cmd, label, args, BaseUtil.getMsgNotColor("noPermission"));
+        HandyCommandWrapper.onCommand(sender, cmd, label, args, BaseUtil.getMsgNotColor("noPermission"));
         return true;
     }
 
