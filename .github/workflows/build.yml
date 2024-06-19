@@ -1,0 +1,37 @@
+name: CI
+
+on: [ push, pull_request ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      - name: Set up Maven settings
+        run: echo "${{ secrets.MAVEN_SETTINGS }}" > $HOME/.m2/settings.xml
+
+      - name: Build with Maven
+        run: mvn clean install
+
+      - name: Find built JAR
+        id: find-jar
+        run: |
+          JAR_PATH=$(find target -name '*.jar' | head -n 1)
+          echo "JAR_PATH=$JAR_PATH" >> $GITHUB_ENV
+          JAR_NAME=$(basename $JAR_PATH)
+          echo "JAR_NAME=$JAR_NAME" >> $GITHUB_ENV
+
+      - name: Upload JAR file
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.JAR_NAME }}
+          path: ${{ env.JAR_PATH }}
