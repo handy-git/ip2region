@@ -34,7 +34,10 @@ public class IpApiUtil {
      * @return 地址
      * @since 1.1.3
      */
-    public static String getIpRegion(String ip) {
+    protected static String getIpRegion(String ip) {
+        if (StrUtil.isEmpty(ip)) {
+            return null;
+        }
         try {
             String json = HttpUtil.get(BaseIpConstants.IP_API_IPV4 + ip + "?lang=zh-CN");
             // 未获取到数据
@@ -43,7 +46,7 @@ public class IpApiUtil {
             }
             IpApiParam ipApiParam = JsonUtil.toBean(json, IpApiParam.class);
             // 转换异常
-            if (!"success".equalsIgnoreCase(ipApiParam.getStatus())) {
+            if (!BaseIpConstants.SUCCESS.equalsIgnoreCase(ipApiParam.getStatus())) {
                 MessageUtil.sendConsoleMessage(ipApiParam.getMessage());
                 return null;
             }

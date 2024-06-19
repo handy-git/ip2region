@@ -27,4 +27,10 @@ public class Ip2regionEnter {
     @TableField(value = "show_enable", comment = "是否显示")
     private Boolean showEnable;
 
+    @TableField(value = "ip", comment = "登陆IP")
+    private String ip;
+
+    @TableField(value = "ip_type", comment = "IP类型")
+    private String ipType;
+
 }

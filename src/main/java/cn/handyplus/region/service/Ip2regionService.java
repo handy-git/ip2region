@@ -2,6 +2,8 @@ package cn.handyplus.region.service;
 
 import cn.handyplus.lib.db.Db;
 import cn.handyplus.region.enter.Ip2regionEnter;
+import cn.handyplus.region.util.IpUtil;
+import org.bukkit.entity.Player;
 
 import java.util.Optional;
 
@@ -44,6 +46,18 @@ public class Ip2regionService {
     }
 
     /**
+     * 根据ip查询
+     *
+     * @param ip ip
+     * @return 显示记录
+     */
+    public Optional<Ip2regionEnter> findByIp(String ip) {
+        Db<Ip2regionEnter> use = Db.use(Ip2regionEnter.class);
+        use.where().eq(Ip2regionEnter::getIp, ip);
+        return use.execution().selectOne();
+    }
+
+    /**
      * 根据UUID更新
      *
      * @param playerUuid 玩家uid
@@ -53,6 +67,19 @@ public class Ip2regionService {
         Db<Ip2regionEnter> use = Db.use(Ip2regionEnter.class);
         use.update().set(Ip2regionEnter::getShowEnable, showEnable);
         use.where().eq(Ip2regionEnter::getPlayerUuid, playerUuid);
+        use.execution().update();
+    }
+
+    /**
+     * 根据UUID更新
+     *
+     * @param player 玩家
+     */
+    public void updateIp(Player player) {
+        Db<Ip2regionEnter> use = Db.use(Ip2regionEnter.class);
+        use.update().set(Ip2regionEnter::getIp, IpUtil.getIp(player))
+                .set(Ip2regionEnter::getIpType, IpUtil.getIpType(player));
+        use.where().eq(Ip2regionEnter::getPlayerUuid, player.getUniqueId());
         use.execution().update();
     }
 

@@ -1,5 +1,6 @@
 package cn.handyplus.region.util;
 
+import cn.handyplus.lib.core.StrUtil;
 import cn.handyplus.region.constants.BaseIpConstants;
 import org.bukkit.entity.Player;
 import org.lionsoul.ip2region.xdb.Searcher;
@@ -29,7 +30,10 @@ public class SearcherUtil {
      * @return 地址
      * @since 1.0.3
      */
-    public static String getIpRegion(String ip) {
+    protected static String getIpRegion(String ip) {
+        if (StrUtil.isEmpty(ip)) {
+            return null;
+        }
         try {
             // 1、创建 searcher 对象
             Searcher searcher = Searcher.newWithFileOnly(ConfigUtil.DB_PATH);

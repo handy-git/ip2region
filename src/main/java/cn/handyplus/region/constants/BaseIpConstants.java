@@ -64,4 +64,19 @@ public abstract class BaseIpConstants {
      */
     public final static String LOCAL = "内网IP";
 
+    /**
+     * Ipv4
+     */
+    public final static String IPV4 = "Ipv4";
+
+    /**
+     * Ipv6
+     */
+    public final static String IPV6 = "Ipv6";
+
+    /**
+     * 是否成功
+     */
+    public final static String SUCCESS = "success";
+
 }
