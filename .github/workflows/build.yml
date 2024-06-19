@@ -16,16 +16,24 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
+      - name: Cache Maven dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
       - name: Decode and set up Maven settings
         run: echo "${{ secrets.MAVEN_SETTINGS_BASE64 }}" | base64 --decode > $HOME/.m2/settings.xml
 
       - name: Build with Maven
-        run: mvn clean install
+        run: mvn --batch-mode clean install
 
       - name: Find built JAR
         id: find-jar
         run: |
-          JAR_PATH=$(find target -name '*.jar' | head -n 1)
+          JAR_PATH=$(find target -name '*.jar' | grep -v 'original' | head -n 1)
           echo "JAR_PATH=$JAR_PATH" >> $GITHUB_ENV
           JAR_NAME=$(basename $JAR_PATH)
           echo "JAR_NAME=$JAR_NAME" >> $GITHUB_ENV
@@ -33,5 +41,5 @@ jobs:
       - name: Upload JAR file
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ env.JAR_NAME }}
-          path: ${{ env.JAR_PATH }}
+          name: ${{ steps.find-jar.outputs.JAR_NAME }}
+          path: ${{ steps.find-jar.outputs.JAR_PATH }}
