@@ -38,7 +38,7 @@ public class Ip2regionApi {
         if (StrUtil.isEmpty(region)) {
             return "未知";
         }
-        List<String> list = SearcherUtil.strToStrList(region);
+        List<String> list = StrUtil.strToStrList(region, "|");
         String national = list.get(0);
         return "0".equals(national) ? "未知" : national;
     }
@@ -54,7 +54,7 @@ public class Ip2regionApi {
         if (StrUtil.isEmpty(region)) {
             return "未知";
         }
-        List<String> list = SearcherUtil.strToStrList(region);
+        List<String> list = StrUtil.strToStrList(region, "|");
         String provincial = list.get(2);
         return "0".equals(provincial) ? "未知" : provincial;
     }
@@ -70,7 +70,7 @@ public class Ip2regionApi {
         if (StrUtil.isEmpty(region)) {
             return "未知";
         }
-        List<String> list = SearcherUtil.strToStrList(region);
+        List<String> list = StrUtil.strToStrList(region, "|");
         String municipal = list.get(3);
         return "0".equals(municipal) ? "未知" : municipal;
     }
@@ -86,7 +86,7 @@ public class Ip2regionApi {
         if (StrUtil.isEmpty(region)) {
             return "未知";
         }
-        List<String> list = SearcherUtil.strToStrList(region);
+        List<String> list = StrUtil.strToStrList(region, "|");
         String serviceProvider = list.get(4);
         return "0".equals(serviceProvider) ? "未知" : serviceProvider;
     }

@@ -4,7 +4,7 @@ import cn.handyplus.lib.command.IHandyCommandEvent;
 import cn.handyplus.lib.util.AssertUtil;
 import cn.handyplus.lib.util.BaseUtil;
 import cn.handyplus.lib.util.MessageUtil;
-import cn.handyplus.region.constants.IpConstants;
+import cn.handyplus.region.constants.BaseIpConstants;
 import cn.handyplus.region.service.Ip2regionService;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -37,7 +37,7 @@ public class ShowCommand implements IHandyCommandEvent {
         // 是否为玩家
         Player player = AssertUtil.notPlayer(sender, BaseUtil.getMsgNotColor("noPlayerFailureMsg"));
         Ip2regionService.getInstance().update(player.getUniqueId().toString(), true);
-        IpConstants.PLAYER_SHOW_MAP.put(player.getUniqueId(), true);
+        BaseIpConstants.PLAYER_SHOW_MAP.put(player.getUniqueId(), true);
         MessageUtil.sendMessage(player, BaseUtil.getMsgNotColor("showMsg"));
     }
 

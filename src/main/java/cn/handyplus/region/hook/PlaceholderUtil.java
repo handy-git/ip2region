@@ -2,9 +2,9 @@ package cn.handyplus.region.hook;
 
 import cn.handyplus.lib.core.StrUtil;
 import cn.handyplus.region.Ip2region;
-import cn.handyplus.region.constants.IpConstants;
+import cn.handyplus.region.constants.BaseIpConstants;
 import cn.handyplus.region.util.ConfigUtil;
-import cn.handyplus.region.util.SearcherUtil;
+import cn.handyplus.region.util.IpUtil;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.OfflinePlayer;
 
@@ -45,18 +45,18 @@ public class PlaceholderUtil extends PlaceholderExpansion {
             return null;
         }
         // %ip2region_ip%
-        if ("ip".equals(identifier)) {
+        if (BaseIpConstants.IP.equals(identifier)) {
             if (player.getPlayer() == null) {
                 return null;
             }
-            return player.getPlayer().getAddress().getAddress().getHostAddress();
+            return IpUtil.getIp(player.getPlayer());
         }
 
-        String region = IpConstants.PLAYER_REGION_MAP.get(player.getUniqueId());
+        String region = BaseIpConstants.PLAYER_REGION_MAP.get(player.getUniqueId());
         if (StrUtil.isEmpty(region)) {
-            return "未知";
+            return BaseIpConstants.UNKNOWN;
         }
-        List<String> list = SearcherUtil.strToStrList(region);
+        List<String> list = StrUtil.strToStrList(region, "|");
         String national = list.get(0);
         String provincial = list.get(2);
         String municipal = list.get(3);
@@ -65,11 +65,11 @@ public class PlaceholderUtil extends PlaceholderExpansion {
         if (list.size() > 5) {
             district = list.get(5);
         }
-        String unknown = ConfigUtil.CONFIG.getString("unknown", "未知");
-        String local = ConfigUtil.CONFIG.getString("local", "内网IP");
+        String unknown = ConfigUtil.CONFIG.getString("unknown", BaseIpConstants.UNKNOWN);
+        String local = ConfigUtil.CONFIG.getString("local", BaseIpConstants.LOCAL);
 
         // 判断是否开启显示
-        boolean showEnable = IpConstants.PLAYER_SHOW_MAP.getOrDefault(player.getUniqueId(), true);
+        boolean showEnable = BaseIpConstants.PLAYER_SHOW_MAP.getOrDefault(player.getUniqueId(), true);
         if (!showEnable) {
             return plugin.getConfig().getString(identifier, unknown);
         }
@@ -85,7 +85,7 @@ public class PlaceholderUtil extends PlaceholderExpansion {
         // %ip2region_provincial%
         if ("provincial".equals(identifier)) {
             String provincialStr = "0".equals(provincial) ? unknown : provincial;
-            if ("内网IP".equals(provincialStr)) {
+            if (BaseIpConstants.LOCAL.equals(provincialStr)) {
                 provincialStr = local;
             }
             return removeProvinceAndCity ? provincialStr.replace("省", "") : provincialStr;
@@ -93,7 +93,7 @@ public class PlaceholderUtil extends PlaceholderExpansion {
         // %ip2region_municipal%
         if ("municipal".equals(identifier)) {
             String municipalStr = "0".equals(municipal) ? unknown : municipal;
-            if ("内网IP".equals(municipalStr)) {
+            if (BaseIpConstants.LOCAL.equals(municipalStr)) {
                 municipalStr = local;
             }
             return removeProvinceAndCity ? municipalStr.replace("市", "") : municipalStr;

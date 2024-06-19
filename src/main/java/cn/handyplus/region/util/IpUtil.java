@@ -1,7 +1,10 @@
 package cn.handyplus.region.util;
 
 import cn.handyplus.lib.core.StrUtil;
+import cn.handyplus.region.constants.IpGetTypeEnum;
 import org.bukkit.entity.Player;
+
+import java.net.InetSocketAddress;
 
 /**
  * 获取ip地址
@@ -17,19 +20,33 @@ public class IpUtil {
      * @param player 玩家
      */
     public static void getPlayerRegion(Player player) {
-        String dataSource = ConfigUtil.CONFIG.getString("dataSource", "offline");
+        String dataSource = ConfigUtil.CONFIG.getString("dataSource", IpGetTypeEnum.OFFLINE.getIpGetType());
         // 离线模式
-        if ("offline".equalsIgnoreCase(dataSource)) {
+        if (IpGetTypeEnum.OFFLINE.getIpGetType().equalsIgnoreCase(dataSource)) {
             SearcherUtil.getPlayerRegion(player);
         }
         // 请求 ipPlus360 模式
-        if ("ipPlus360".equalsIgnoreCase(dataSource)) {
+        if (IpGetTypeEnum.IP_PLUS_360.getIpGetType().equalsIgnoreCase(dataSource)) {
             IpPlus360Util.getPlayerRegion(player);
         }
         // 请求 ipApi 模式
-        if ("ipApi".equalsIgnoreCase(dataSource)) {
+        if (IpGetTypeEnum.IP_API.getIpGetType().equalsIgnoreCase(dataSource)) {
             IpApiUtil.getPlayerRegion(player);
         }
+    }
+
+    /**
+     * 获取ip
+     *
+     * @param player 玩家
+     * @return ip
+     */
+    public static String getIp(Player player) {
+        InetSocketAddress address = player.getAddress();
+        if (address == null) {
+            return null;
+        }
+        return address.getAddress().getHostAddress();
     }
 
     /**

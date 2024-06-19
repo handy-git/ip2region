@@ -9,7 +9,7 @@ import java.util.UUID;
  *
  * @author handy
  */
-public abstract class IpConstants {
+public abstract class BaseIpConstants {
 
     /**
      * 检查更新的版本url
@@ -48,5 +48,20 @@ public abstract class IpConstants {
      * @since 1.1.0
      */
     public final static String IP_API_IPV4 = "http://ip-api.com/json/";
+
+    /**
+     * IP
+     */
+    public final static String IP = "ip";
+
+    /**
+     * 未知
+     */
+    public final static String UNKNOWN = "未知";
+
+    /**
+     * 内网IP
+     */
+    public final static String LOCAL = "内网IP";
 
 }

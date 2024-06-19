@@ -4,7 +4,7 @@ import cn.handyplus.lib.command.IHandyCommandEvent;
 import cn.handyplus.lib.util.AssertUtil;
 import cn.handyplus.lib.util.BaseUtil;
 import cn.handyplus.lib.util.MessageUtil;
-import cn.handyplus.region.constants.IpConstants;
+import cn.handyplus.region.constants.BaseIpConstants;
 import cn.handyplus.region.enter.Ip2regionEnter;
 import cn.handyplus.region.service.Ip2regionService;
 import org.bukkit.command.Command;
@@ -45,7 +45,7 @@ public class ToggleCommand implements IHandyCommandEvent {
         }
         Ip2regionEnter ip2regionEnter = ip2regionEnterOptional.get();
         Ip2regionService.getInstance().update(player.getUniqueId().toString(), !ip2regionEnter.getShowEnable());
-        IpConstants.PLAYER_SHOW_MAP.put(player.getUniqueId(), !ip2regionEnter.getShowEnable());
+        BaseIpConstants.PLAYER_SHOW_MAP.put(player.getUniqueId(), !ip2regionEnter.getShowEnable());
         MessageUtil.sendMessage(player, BaseUtil.getMsgNotColor("toggleMsg"));
     }
 

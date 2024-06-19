@@ -2,7 +2,7 @@ package cn.handyplus.region.listener;
 
 import cn.handyplus.lib.annotation.HandyListener;
 import cn.handyplus.lib.expand.adapter.HandySchedulerUtil;
-import cn.handyplus.region.constants.IpConstants;
+import cn.handyplus.region.constants.BaseIpConstants;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -43,7 +43,7 @@ public class PlayerQuitEventListener implements Listener {
      * @param player 事件
      */
     private void removeCache(Player player) {
-        HandySchedulerUtil.runTaskAsynchronously(() -> IpConstants.PLAYER_REGION_MAP.remove(player.getUniqueId()));
+        HandySchedulerUtil.runTaskAsynchronously(() -> BaseIpConstants.PLAYER_REGION_MAP.remove(player.getUniqueId()));
     }
 
 }

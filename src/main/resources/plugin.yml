@@ -1,9 +1,9 @@
 name: Ip2region
 main: cn.handyplus.region.Ip2region
-version: 1.1.2
+version: 1.1.3
 author: handy
 api-version: 1.13
-website: https://ricedoc.handyplus.cn/wiki/ip2region/log/
+website: https://ricedoc.handyplus.cn/wiki/ip2region/log
 depend: [ PlaceholderAPI ]
 description: 玩家地域查询
 folia-supported: true

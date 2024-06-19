@@ -4,7 +4,7 @@ import cn.handyplus.lib.core.HttpUtil;
 import cn.handyplus.lib.core.JsonUtil;
 import cn.handyplus.lib.core.StrUtil;
 import cn.handyplus.lib.util.MessageUtil;
-import cn.handyplus.region.constants.IpConstants;
+import cn.handyplus.region.constants.BaseIpConstants;
 import cn.handyplus.region.param.IpApiParam;
 import org.bukkit.entity.Player;
 
@@ -22,26 +22,35 @@ public class IpApiUtil {
      * @param player 玩家
      */
     protected static void getPlayerRegion(Player player) {
+        String ip = ConfigUtil.CONFIG.getString("testIp", IpUtil.getIp(player));
+        String region = getIpRegion(ip);
+        BaseIpConstants.PLAYER_REGION_MAP.put(player.getUniqueId(), region);
+    }
+
+    /**
+     * 获取地址
+     *
+     * @param ip Ip
+     * @return 地址
+     * @since 1.1.3
+     */
+    public static String getIpRegion(String ip) {
         try {
-            // IP地址
-            String ip = player.getAddress().getAddress().getHostAddress();
-            String testIp = ConfigUtil.CONFIG.getString("testIp", ip);
-            String json = HttpUtil.get(IpConstants.IP_API_IPV4 + testIp + "?lang=zh-CN");
+            String json = HttpUtil.get(BaseIpConstants.IP_API_IPV4 + ip + "?lang=zh-CN");
             // 未获取到数据
             if (StrUtil.isEmpty(json)) {
-                return;
+                return null;
             }
             IpApiParam ipApiParam = JsonUtil.toBean(json, IpApiParam.class);
             // 转换异常
             if (!"success".equalsIgnoreCase(ipApiParam.getStatus())) {
                 MessageUtil.sendConsoleMessage(ipApiParam.getMessage());
-                return;
+                return null;
             }
-            String region = IpUtil.getStr(ipApiParam.getCountry()) + "|" + IpUtil.getStr(ipApiParam.getAs()) + "|" + IpUtil.getStr(ipApiParam.getRegionName()) + "|" + IpUtil.getStr(ipApiParam.getCity()) + "|" + IpUtil.getStr(ipApiParam.getIsp());
-            IpConstants.PLAYER_REGION_MAP.put(player.getUniqueId(), region);
+            return IpUtil.getStr(ipApiParam.getCountry()) + "|" + IpUtil.getStr(ipApiParam.getAs()) + "|" + IpUtil.getStr(ipApiParam.getRegionName()) + "|" + IpUtil.getStr(ipApiParam.getCity()) + "|" + IpUtil.getStr(ipApiParam.getIsp());
         } catch (Exception ignored) {
         }
+        return null;
     }
-
 
 }

@@ -4,7 +4,7 @@ import cn.handyplus.lib.core.HttpUtil;
 import cn.handyplus.lib.core.JsonUtil;
 import cn.handyplus.lib.core.StrUtil;
 import cn.handyplus.lib.util.MessageUtil;
-import cn.handyplus.region.constants.IpConstants;
+import cn.handyplus.region.constants.BaseIpConstants;
 import cn.handyplus.region.param.IpPlus360Param;
 import org.bukkit.entity.Player;
 
@@ -43,7 +43,7 @@ public class IpPlus360Util {
                     return;
                 }
                 ip = StrUtil.isNotEmpty(testIp4) ? testIp4 : ip;
-                String ipPlus360Ipv4Url = ConfigUtil.CONFIG.getString("ipPlus360Ipv4Url", IpConstants.IP_PLUS_360_IPV4);
+                String ipPlus360Ipv4Url = ConfigUtil.CONFIG.getString("ipPlus360Ipv4Url", BaseIpConstants.IP_PLUS_360_IPV4);
                 json = HttpUtil.get(ipPlus360Ipv4Url + "?key=" + ipPlus360Ipv4Key + "&ip=" + ip + "&coordsys=WGS84");
             } else if (StrUtil.isNotEmpty(testIp6) || inetAddress instanceof Inet6Address) {
                 // 未填写key
@@ -51,7 +51,7 @@ public class IpPlus360Util {
                     return;
                 }
                 ip = StrUtil.isNotEmpty(testIp6) ? testIp6 : ip;
-                String ipPlus360Ipv6Url = ConfigUtil.CONFIG.getString("ipPlus360Ipv6Url", IpConstants.IP_PLUS_360_IPV6);
+                String ipPlus360Ipv6Url = ConfigUtil.CONFIG.getString("ipPlus360Ipv6Url", BaseIpConstants.IP_PLUS_360_IPV6);
                 json = HttpUtil.get(ipPlus360Ipv6Url + "?key=" + ipPlus360Ipv6Key + "&ip=" + ip + "&coordsys=WGS84");
             }
             // 未获取到数据
@@ -66,7 +66,7 @@ public class IpPlus360Util {
             }
             IpPlus360Param.IpPlus360ParamData data = ipPlus360Param.getData();
             String region = IpUtil.getStr(data.getCountry()) + "|" + IpUtil.getStr(data.getContinent()) + "|" + IpUtil.getStr(data.getProv()) + "|" + IpUtil.getStr(data.getCity()) + "|" + IpUtil.getStr(data.getOwner() + "|" + IpUtil.getStr(data.getDistrict()));
-            IpConstants.PLAYER_REGION_MAP.put(player.getUniqueId(), region);
+            BaseIpConstants.PLAYER_REGION_MAP.put(player.getUniqueId(), region);
         } catch (Exception ignored) {
         }
     }

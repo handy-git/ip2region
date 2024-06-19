@@ -1,14 +1,8 @@
 package cn.handyplus.region.util;
 
-import cn.handyplus.lib.core.StrUtil;
-import cn.handyplus.region.constants.IpConstants;
+import cn.handyplus.region.constants.BaseIpConstants;
 import org.bukkit.entity.Player;
 import org.lionsoul.ip2region.xdb.Searcher;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Searcher工具类
@@ -23,10 +17,9 @@ public class SearcherUtil {
      * @param player 玩家
      */
     protected static void getPlayerRegion(Player player) {
-        String ip = player.getAddress().getAddress().getHostAddress();
-        ip = ConfigUtil.CONFIG.getString("testIp", ip);
+        String ip = ConfigUtil.CONFIG.getString("testIp", IpUtil.getIp(player));
         String region = getIpRegion(ip);
-        IpConstants.PLAYER_REGION_MAP.put(player.getUniqueId(), region);
+        BaseIpConstants.PLAYER_REGION_MAP.put(player.getUniqueId(), region);
     }
 
     /**
@@ -48,20 +41,6 @@ public class SearcherUtil {
         } catch (Exception ignored) {
         }
         return null;
-    }
-
-    /**
-     * 切割地址
-     *
-     * @param str 地址
-     * @return 分区地址
-     */
-    public static List<String> strToStrList(String str) {
-        List<String> list = new ArrayList<>();
-        if (StrUtil.isEmpty(str)) {
-            return list;
-        }
-        return Arrays.stream(str.split("\\|")).map(String::trim).collect(Collectors.toList());
     }
 
 }
