@@ -17,9 +17,7 @@ jobs:
           java-version: '21'
 
       - name: Decode and set up Maven settings
-        run: |
-          mkdir -p $HOME/.m2
-          echo "${{ secrets.MAVEN_SETTINGS_BASE64 }}" | base64 --decode > $HOME/.m2/settings.xml
+        run: echo "${{ secrets.MAVEN_SETTINGS_BASE64 }}" | base64 --decode > $HOME/.m2/settings.xml
 
       - name: Build with Maven
         run: mvn clean install
