@@ -41,11 +41,9 @@ jobs:
         run: |
           JAR_PATH=$(find target -name '*.jar' | grep -v 'original' | head -n 1)
           echo "JAR_PATH=$JAR_PATH" >> $GITHUB_ENV
-          JAR_NAME=$(basename $JAR_PATH)
-          echo "JAR_NAME=$JAR_NAME" >> $GITHUB_ENV
 
       - name: Upload JAR file
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ env.JAR_NAME }}
+          name: Ip2region Artifacts
           path: ${{ env.JAR_PATH }}
