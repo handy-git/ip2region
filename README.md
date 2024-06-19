@@ -9,6 +9,10 @@
 下载地址: [点击查看](https://github.com/handy-git/ip2region/releases)  
 API: [点击查看](https://handy-git.github.io/ip2region/)
 
+开发版本下载渠道:
+
+[GITHUB ACTIONS](https://github.com/handy-git/ip2region/actions)
+
 购买后可获得售后服务，作者会指导使用，如未购买请自行查阅wiki了解如何使用
 
 ## 使用统计
