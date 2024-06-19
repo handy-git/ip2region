@@ -1,6 +1,12 @@
 name: CI
 
-on: [ push, pull_request ]
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
 
 jobs:
   build:
@@ -41,5 +47,5 @@ jobs:
       - name: Upload JAR file
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ steps.find-jar.outputs.JAR_NAME }}
-          path: ${{ steps.find-jar.outputs.JAR_PATH }}
+          name: ${{ env.JAR_NAME }}
+          path: ${{ env.JAR_PATH }}
