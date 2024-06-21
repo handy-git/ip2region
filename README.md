@@ -6,7 +6,6 @@
 
 使用教程: [点击查看](https://ricedoc.handyplus.cn/wiki/ip2region/README/)  
 购买地址: [点击查看](https://afdian.net/item/c1bf175c4a3111ed94bb52540025c377)  
-下载地址: [点击查看](https://github.com/handy-git/ip2region/releases)  
 API: [点击查看](https://handy-git.github.io/ip2region/)
 
 开发版本下载渠道:
