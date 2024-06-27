@@ -2,7 +2,6 @@ package cn.handyplus.region;
 
 import cn.handyplus.lib.InitApi;
 import cn.handyplus.lib.constants.BaseConstants;
-import cn.handyplus.lib.db.SqlManagerUtil;
 import cn.handyplus.lib.util.MessageUtil;
 import cn.handyplus.region.constants.BaseIpConstants;
 import cn.handyplus.region.hook.PlaceholderUtil;
@@ -41,8 +40,6 @@ public class Ip2region extends JavaPlugin {
     @Override
     public void onDisable() {
         InitApi.disable();
-        // 关闭数据源
-        SqlManagerUtil.getInstance().close();
     }
 
     public static Ip2region getInstance() {
