@@ -39,7 +39,7 @@ public class Ip2regionApi {
         if (StrUtil.isEmpty(region)) {
             return BaseIpConstants.UNKNOWN;
         }
-        List<String> list = StrUtil.strToStrList(region, "|");
+        List<String> list = StrUtil.strToStrList(region, "\\|");
         String national = list.get(0);
         return "0".equals(national) ? BaseIpConstants.UNKNOWN : national;
     }
@@ -55,7 +55,7 @@ public class Ip2regionApi {
         if (StrUtil.isEmpty(region)) {
             return BaseIpConstants.UNKNOWN;
         }
-        List<String> list = StrUtil.strToStrList(region, "|");
+        List<String> list = StrUtil.strToStrList(region, "\\|");
         String provincial = list.get(2);
         return "0".equals(provincial) ? BaseIpConstants.UNKNOWN : provincial;
     }
@@ -71,7 +71,7 @@ public class Ip2regionApi {
         if (StrUtil.isEmpty(region)) {
             return BaseIpConstants.UNKNOWN;
         }
-        List<String> list = StrUtil.strToStrList(region, "|");
+        List<String> list = StrUtil.strToStrList(region, "\\|");
         String municipal = list.get(3);
         return "0".equals(municipal) ? BaseIpConstants.UNKNOWN : municipal;
     }
@@ -87,7 +87,7 @@ public class Ip2regionApi {
         if (StrUtil.isEmpty(region)) {
             return BaseIpConstants.UNKNOWN;
         }
-        List<String> list = StrUtil.strToStrList(region, "|");
+        List<String> list = StrUtil.strToStrList(region, "\\|");
         String serviceProvider = list.get(4);
         return "0".equals(serviceProvider) ? BaseIpConstants.UNKNOWN : serviceProvider;
     }

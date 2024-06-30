@@ -56,7 +56,7 @@ public class PlaceholderUtil extends PlaceholderExpansion {
         if (StrUtil.isEmpty(region)) {
             return BaseIpConstants.UNKNOWN;
         }
-        List<String> list = StrUtil.strToStrList(region, "|");
+        List<String> list = StrUtil.strToStrList(region, "\\|");
         String national = list.get(0);
         String provincial = list.get(2);
         String municipal = list.get(3);
