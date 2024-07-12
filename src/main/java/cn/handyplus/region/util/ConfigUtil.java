@@ -26,7 +26,7 @@ public class ConfigUtil {
         // 只加载一次db
         File file = new File(InitApi.PLUGIN.getDataFolder(), "ip2region.xdb");
         if (!file.exists()) {
-            Ip2region.getInstance().saveResource("ip2region.xdb", false);
+            Ip2region.INSTANCE.saveResource("ip2region.xdb", false);
             file = new File(InitApi.PLUGIN.getDataFolder(), "ip2region.xdb");
         }
         DB_PATH = file.getPath();

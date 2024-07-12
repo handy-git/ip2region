@@ -3,9 +3,9 @@ package cn.handyplus.region;
 import cn.handyplus.lib.InitApi;
 import cn.handyplus.lib.constants.BaseConstants;
 import cn.handyplus.lib.util.MessageUtil;
-import cn.handyplus.region.constants.BaseIpConstants;
 import cn.handyplus.region.hook.PlaceholderUtil;
 import cn.handyplus.region.util.ConfigUtil;
+import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -14,7 +14,7 @@ import org.bukkit.plugin.java.JavaPlugin;
  * @author handy
  */
 public class Ip2region extends JavaPlugin {
-    private static Ip2region INSTANCE;
+    public static Ip2region INSTANCE;
 
     @Override
     public void onEnable() {
@@ -31,19 +31,15 @@ public class Ip2region extends JavaPlugin {
                 .initCommand("cn.handyplus.region.command")
                 .enableSql("cn.handyplus.region.enter")
                 .addMetrics(16650)
-                .checkVersion(ConfigUtil.CONFIG.getBoolean(BaseConstants.IS_CHECK_UPDATE), BaseIpConstants.PLUGIN_VERSION_URL);
+                .checkVersion(ConfigUtil.CONFIG.getBoolean(BaseConstants.IS_CHECK_UPDATE));
 
-        MessageUtil.sendConsoleMessage("§a已成功载入服务器！");
-        MessageUtil.sendConsoleMessage("§aAuthor:handy WIKI: https://ricedoc.handyplus.cn/wiki/ip2region/README/");
+        MessageUtil.sendConsoleMessage(ChatColor.GREEN + "已成功载入服务器!");
+        MessageUtil.sendConsoleMessage(ChatColor.GREEN + "Author:handy WIKI: https://ricedoc.handyplus.cn/wiki/ip2region/README/");
     }
 
     @Override
     public void onDisable() {
         InitApi.disable();
-    }
-
-    public static Ip2region getInstance() {
-        return INSTANCE;
     }
 
 }
