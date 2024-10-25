@@ -12,11 +12,6 @@ import java.util.UUID;
 public abstract class BaseIpConstants {
 
     /**
-     * 检查更新的版本url
-     */
-    public final static String PLUGIN_VERSION_URL = "https://api.github.com/repos/handy-git/ip2region/releases/latest";
-
-    /**
      * 玩家地区
      */
     public static Map<UUID, String> PLAYER_REGION_MAP = new HashMap<>();
