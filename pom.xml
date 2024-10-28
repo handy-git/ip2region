@@ -6,16 +6,23 @@
 
     <groupId>cn.handyplus.region</groupId>
     <artifactId>ip2region</artifactId>
-    <version>1.1.5</version>
+    <version>1.1.6</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spigot-api.vesion>1.21-R0.1-SNAPSHOT</spigot-api.vesion>
+        <spigot-api.vesion>1.21.3-R0.1-SNAPSHOT</spigot-api.vesion>
         <lombok.version>1.18.34</lombok.version>
-        <HandyLib.version>3.12.6</HandyLib.version>
+        <HandyLib.version>3.12.7</HandyLib.version>
         <ip2region.version>2.7.0</ip2region.version>
         <placeholderapi.version>2.10.5</placeholderapi.version>
     </properties>
+
+    <repositories>
+        <repository>
+            <id>spigot-repo</id>
+            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+        </repository>
+    </repositories>
 
     <dependencies>
         <dependency>
