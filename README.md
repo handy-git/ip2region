@@ -8,21 +8,22 @@
 
 A simple and efficient geolocation plugin.
 
-If this plugin has helped you, please consider giving it a Star in the upper right corner—it would greatly support the author!
+If this plugin has helped you, please consider giving it a Star in the upper right corner—it would greatly support the
+author!
 
 ## Variable Support
 
 This plugin currently registers the following PAPI variables (requires: PlaceholderAPI):
 
-| Variable Name                   | Display Content       | Example     |
-|---------------------------------|-----------------------|-------------|
-| %ip2region_region%              | Full Region           | China       |
-| %ip2region_national%            | Country               | China       |
-| %ip2region_provincial%          | Province              | Shanghai    |
-| %ip2region_municipal%           | City                  | Shanghai    |
-| %ip2region_serviceProvider%     | ISP                   | Telecom     |
-| %ip2region_ip%                  | Player's IP (1.0.8+)  | 127.0.0.1   |
-| %ip2region_district%            | District (1.1.0+)     | Songjiang   |
+| Variable Name               | Display Content      | Example   |
+|-----------------------------|----------------------|-----------|
+| %ip2region_region%          | Full Region          | China     |
+| %ip2region_national%        | Country              | China     |
+| %ip2region_provincial%      | Province             | Shanghai  |
+| %ip2region_municipal%       | City                 | Shanghai  |
+| %ip2region_serviceProvider% | ISP                  | Telecom   |
+| %ip2region_ip%              | Player's IP (1.0.8+) | 127.0.0.1 |
+| %ip2region_district%        | District (1.1.0+)    | Songjiang |
 
 ### PAPI Special Instructions
 
@@ -49,18 +50,19 @@ If you have other ideas or sources, feel free to suggest them!
 
 ### Pros and Cons Analysis
 
-| Type       | Cost | Data Accuracy | Requires Network | Supported Network | Highest Level Supported | Official Site                                       |
-|------------|------|---------------|------------------|-------------------|-------------------------|-----------------------------------------------------|
-| offline    | Free | 99%           | No               | IPv4             | City level              | [Official Site](https://github.com/lionsoul2014/ip2region) |
-| ipPlus360  | Paid | 99.999%       | Yes              | IPv4 and IPv6    | District level          | [Official Site](https://mall.ipplus360.com/)        |
-| ipApi      | Free | 99.9%         | Yes              | IPv4 and IPv6    | City level              | [Official Site](https://ip-api.com/)                |
+| Type      | Cost | Data Accuracy | Requires Network | Supported Network | Highest Level Supported | Official Site                                              |
+|-----------|------|---------------|------------------|-------------------|-------------------------|------------------------------------------------------------|
+| offline   | Free | 99%           | No               | IPv4              | City level              | [Official Site](https://github.com/lionsoul2014/ip2region) |
+| ipPlus360 | Paid | 99.999%       | Yes              | IPv4 and IPv6     | District level          | [Official Site](https://mall.ipplus360.com/)               |
+| ipApi     | Free | 99.9%         | Yes              | IPv4 and IPv6     | City level              | [Official Site](https://ip-api.com/)                       |
 
 ### Special Note
 
 If you wish to purchase ipPlus360, it is recommended to buy the city-level option.  
 [IPv4](https://mall.ipplus360.com/pros/IPVFourGeoAPI) | [IPv6](https://mall.ipplus360.com/pros/IPGeoAPI)
 
-For district-level support, add the following configuration to config.yml according to the official API documentation, and modify for other levels as needed:
+For district-level support, add the following configuration to config.yml according to the official API documentation,
+and modify for other levels as needed:
 
 ```
 ipPlus360Ipv4Url: "https://api.ipplus360.com/ip/geo/v1/district/"
@@ -75,7 +77,8 @@ For offline and ipApi modes, add to config.yml, reload the plugin, and re-login 
 testIp: test IP address
 ```
 
-For ipPlus360 mode, add to config.yml, reload the plugin, and re-login to test (only one can be added at a time; if both are added, IPv4 is prioritized).
+For ipPlus360 mode, add to config.yml, reload the plugin, and re-login to test (only one can be added at a time; if both
+are added, IPv4 is prioritized).
 
 ```
 testIp4: test IPv4 address

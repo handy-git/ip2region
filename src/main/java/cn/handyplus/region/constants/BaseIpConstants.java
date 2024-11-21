@@ -14,14 +14,14 @@ public abstract class BaseIpConstants {
     /**
      * 玩家地区
      */
-    public static Map<UUID, String> PLAYER_REGION_MAP = new HashMap<>();
+    public final static Map<UUID, String> PLAYER_REGION_MAP = new HashMap<>();
 
     /**
      * 是否显示
      *
      * @since 1.0.5
      */
-    public static Map<UUID, Boolean> PLAYER_SHOW_MAP = new HashMap<>();
+    public final static Map<UUID, Boolean> PLAYER_SHOW_MAP = new HashMap<>();
 
     /**
      * ipPlus360 ipv4 api地址
@@ -73,5 +73,7 @@ public abstract class BaseIpConstants {
      * 是否成功
      */
     public final static String SUCCESS = "success";
+
+    public final static String DEFAULT_NUMBER = "123456";
 
 }

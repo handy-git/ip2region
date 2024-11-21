@@ -49,12 +49,19 @@ public enum TabListEnum {
     public static List<String> returnList(String[] args, int argsLength) {
         List<String> completions = new ArrayList<>();
         for (TabListEnum tabListEnum : TabListEnum.values()) {
+            // 过滤掉参数长度不满足要求的情况
             if (tabListEnum.getBefPos() - 1 >= args.length) {
                 continue;
             }
-            if ((tabListEnum.getBef() == null || tabListEnum.getBef().equalsIgnoreCase(args[tabListEnum.getBefPos() - 1])) && tabListEnum.getNum() == argsLength) {
-                completions = tabListEnum.getList();
+            // 过滤掉前置参数不匹配的情况
+            if (tabListEnum.getBef() != null && !tabListEnum.getBef().equalsIgnoreCase(args[tabListEnum.getBefPos() - 1])) {
+                continue;
             }
+            // 过滤掉参数长度不匹配的情况
+            if (tabListEnum.getNum() != argsLength) {
+                continue;
+            }
+            return tabListEnum.getList();
         }
         return completions;
     }

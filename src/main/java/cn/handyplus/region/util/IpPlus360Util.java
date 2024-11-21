@@ -60,7 +60,7 @@ public class IpPlus360Util {
             // 判断是何种类型
             if (StrUtil.isNotEmpty(testIp4) || BaseIpConstants.IPV4.equals(ipType)) {
                 // 未填写key
-                if ("123456".equals(ipPlus360Ipv4Key)) {
+                if (BaseIpConstants.DEFAULT_NUMBER.equals(ipPlus360Ipv4Key)) {
                     return null;
                 }
                 ip = StrUtil.isNotEmpty(testIp4) ? testIp4 : ip;
@@ -68,7 +68,7 @@ public class IpPlus360Util {
                 json = HttpUtil.get(ipPlus360Ipv4Url + "?key=" + ipPlus360Ipv4Key + "&ip=" + ip + "&coordsys=WGS84");
             } else if (StrUtil.isNotEmpty(testIp6) || BaseIpConstants.IPV6.equals(ipType)) {
                 // 未填写key
-                if ("123456".equals(ipPlus360Ipv6Key)) {
+                if (BaseIpConstants.DEFAULT_NUMBER.equals(ipPlus360Ipv6Key)) {
                     return null;
                 }
                 ip = StrUtil.isNotEmpty(testIp6) ? testIp6 : ip;
