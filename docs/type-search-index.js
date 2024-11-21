@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"cn.handyplus.region","l":"Ip2region"},{"p":"cn.handyplus.region.api","l":"Ip2regionApi"},{"l":"所有类和接口","u":"allclasses-index.html"}];updateSearchResults();
