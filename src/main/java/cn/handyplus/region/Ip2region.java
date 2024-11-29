@@ -14,7 +14,7 @@ import org.bukkit.plugin.java.JavaPlugin;
  * @author handy
  */
 public class Ip2region extends JavaPlugin {
-    private static Ip2region INSTANCE;
+    public static Ip2region INSTANCE;
 
     @Override
     public void onEnable() {
@@ -40,10 +40,6 @@ public class Ip2region extends JavaPlugin {
     @Override
     public void onDisable() {
         InitApi.disable();
-    }
-
-    public static Ip2region getInstance() {
-        return INSTANCE;
     }
 
 }

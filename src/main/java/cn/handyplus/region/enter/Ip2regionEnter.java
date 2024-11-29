@@ -2,7 +2,7 @@ package cn.handyplus.region.enter;
 
 import cn.handyplus.lib.annotation.TableField;
 import cn.handyplus.lib.annotation.TableName;
-import cn.handyplus.lib.db.enums.IndexEnum;
+import cn.handyplus.lib.db.IndexEnum;
 import lombok.Getter;
 import lombok.Setter;
 
