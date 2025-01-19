@@ -100,3 +100,7 @@ testIp6: 测试IP
 
 [![Star History Chart](https://api.star-history.com/svg?repos=handy-git/ip2region&type=Date)](https://star-history.com/#handy-git/ip2region&Date)
 
+## gitSponsors
+
+[<img src="https://api.gitsponsors.com/api/badge/img?id=550263180" height="20">](https://api.gitsponsors.com/api/badge/link?p=plVBiIaCrQ+yGb6hPNP8H+8YhPeaEAOIaOeA69o4K0M7HKvozxAV41ckkeMd8DpY91VVJ/ULd4vlhG4Z8jipQQ==)
+

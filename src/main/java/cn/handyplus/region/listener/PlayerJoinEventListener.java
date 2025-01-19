@@ -1,13 +1,11 @@
 package cn.handyplus.region.listener;
 
 import cn.handyplus.lib.annotation.HandyListener;
-import cn.handyplus.lib.constants.BaseConstants;
 import cn.handyplus.lib.expand.adapter.HandySchedulerUtil;
 import cn.handyplus.lib.util.HandyHttpUtil;
 import cn.handyplus.region.constants.BaseIpConstants;
 import cn.handyplus.region.enter.Ip2regionEnter;
 import cn.handyplus.region.service.Ip2regionService;
-import cn.handyplus.region.util.ConfigUtil;
 import cn.handyplus.region.util.IpUtil;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -60,10 +58,6 @@ public class PlayerJoinEventListener implements Listener {
      */
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onOpPlayerJoin(PlayerJoinEvent event) {
-        // op登录发送更新提醒
-        if (!ConfigUtil.CONFIG.getBoolean(BaseConstants.IS_CHECK_UPDATE_TO_OP_MSG)) {
-            return;
-        }
         HandyHttpUtil.checkVersion(event.getPlayer());
     }
 
