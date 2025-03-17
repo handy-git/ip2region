@@ -5,14 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>cn.handyplus.region</groupId>
-    <artifactId>ip2region</artifactId>
-    <version>1.1.8</version>
+    <artifactId>Ip2region</artifactId>
+    <version>1.1.9</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spigot-api.vesion>1.21.4-R0.1-SNAPSHOT</spigot-api.vesion>
         <lombok.version>1.18.36</lombok.version>
-        <HandyLib.version>3.15.5</HandyLib.version>
+        <HandyLib.version>3.18.2</HandyLib.version>
         <ip2region.version>2.7.0</ip2region.version>
         <placeholderapi.version>2.11.6</placeholderapi.version>
         <annotations.version>24.1.0</annotations.version>

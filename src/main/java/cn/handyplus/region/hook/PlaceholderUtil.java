@@ -7,6 +7,7 @@ import cn.handyplus.region.util.ConfigUtil;
 import cn.handyplus.region.util.IpUtil;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.OfflinePlayer;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -28,7 +29,7 @@ public class PlaceholderUtil extends PlaceholderExpansion {
      * @return 结果
      */
     @Override
-    public String getIdentifier() {
+    public @NotNull String getIdentifier() {
         return "ip2region";
     }
 
@@ -40,7 +41,7 @@ public class PlaceholderUtil extends PlaceholderExpansion {
      * @return 结果
      */
     @Override
-    public String onRequest(OfflinePlayer player, String identifier) {
+    public String onRequest(OfflinePlayer player, @NotNull String identifier) {
         if (player == null) {
             return null;
         }
@@ -71,7 +72,7 @@ public class PlaceholderUtil extends PlaceholderExpansion {
         // 判断是否开启显示
         boolean showEnable = BaseIpConstants.PLAYER_SHOW_MAP.getOrDefault(player.getUniqueId(), true);
         if (!showEnable) {
-            return plugin.getConfig().getString(identifier, unknown);
+            return unknown;
         }
         // %ip2region_region%
         if ("region".equals(identifier)) {
@@ -137,7 +138,7 @@ public class PlaceholderUtil extends PlaceholderExpansion {
      * @return 结果
      */
     @Override
-    public String getAuthor() {
+    public @NotNull String getAuthor() {
         return plugin.getDescription().getAuthors().toString();
     }
 
@@ -147,7 +148,8 @@ public class PlaceholderUtil extends PlaceholderExpansion {
      * @return 结果
      */
     @Override
-    public String getVersion() {
+    public @NotNull String getVersion() {
         return plugin.getDescription().getVersion();
     }
+
 }
