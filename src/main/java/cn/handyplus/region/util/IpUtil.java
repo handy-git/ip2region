@@ -1,5 +1,6 @@
 package cn.handyplus.region.util;
 
+import cn.handyplus.lib.constants.BaseConstants;
 import cn.handyplus.lib.core.StrUtil;
 import cn.handyplus.region.constants.BaseIpConstants;
 import cn.handyplus.region.constants.IpGetTypeEnum;
@@ -24,7 +25,7 @@ public class IpUtil {
      * @param player 玩家
      */
     public static void getPlayerRegion(Player player) {
-        String dataSource = ConfigUtil.CONFIG.getString("dataSource", IpGetTypeEnum.OFFLINE.getIpGetType());
+        String dataSource = BaseConstants.CONFIG.getString("dataSource", IpGetTypeEnum.OFFLINE.getIpGetType());
         // 离线模式
         if (IpGetTypeEnum.OFFLINE.getIpGetType().equalsIgnoreCase(dataSource)) {
             SearcherUtil.getPlayerRegion(player);
@@ -46,7 +47,7 @@ public class IpUtil {
      * @since 1.1.3
      */
     public static String getIpRegion(String ip) {
-        String dataSource = ConfigUtil.CONFIG.getString("dataSource", IpGetTypeEnum.OFFLINE.getIpGetType());
+        String dataSource = BaseConstants.CONFIG.getString("dataSource", IpGetTypeEnum.OFFLINE.getIpGetType());
         // 离线模式
         if (IpGetTypeEnum.OFFLINE.getIpGetType().equalsIgnoreCase(dataSource)) {
             return SearcherUtil.getIpRegion(ip);

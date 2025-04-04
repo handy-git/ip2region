@@ -1,5 +1,6 @@
 package cn.handyplus.region.hook;
 
+import cn.handyplus.lib.constants.BaseConstants;
 import cn.handyplus.lib.core.StrUtil;
 import cn.handyplus.region.Ip2region;
 import cn.handyplus.region.constants.BaseIpConstants;
@@ -66,8 +67,8 @@ public class PlaceholderUtil extends PlaceholderExpansion {
         if (list.size() > 5) {
             district = list.get(5);
         }
-        String unknown = ConfigUtil.CONFIG.getString("unknown", BaseIpConstants.UNKNOWN);
-        String local = ConfigUtil.CONFIG.getString("local", BaseIpConstants.LOCAL);
+        String unknown = BaseConstants.CONFIG.getString("unknown", BaseIpConstants.UNKNOWN);
+        String local = BaseConstants.CONFIG.getString("local", BaseIpConstants.LOCAL);
 
         // 判断是否开启显示
         boolean showEnable = BaseIpConstants.PLAYER_SHOW_MAP.getOrDefault(player.getUniqueId(), true);
@@ -82,7 +83,7 @@ public class PlaceholderUtil extends PlaceholderExpansion {
         if ("national".equals(identifier)) {
             return "0".equals(national) ? unknown : national;
         }
-        boolean removeProvinceAndCity = ConfigUtil.CONFIG.getBoolean("removeProvinceAndCity");
+        boolean removeProvinceAndCity = BaseConstants.CONFIG.getBoolean("removeProvinceAndCity");
         // %ip2region_provincial%
         if ("provincial".equals(identifier)) {
             String provincialStr = "0".equals(provincial) ? unknown : provincial;

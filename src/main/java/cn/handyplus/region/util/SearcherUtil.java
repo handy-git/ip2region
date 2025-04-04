@@ -1,5 +1,6 @@
 package cn.handyplus.region.util;
 
+import cn.handyplus.lib.constants.BaseConstants;
 import cn.handyplus.lib.core.StrUtil;
 import cn.handyplus.region.constants.BaseIpConstants;
 import org.bukkit.entity.Player;
@@ -18,7 +19,7 @@ public class SearcherUtil {
      * @param player 玩家
      */
     protected static void getPlayerRegion(Player player) {
-        String ip = ConfigUtil.CONFIG.getString("testIp", IpUtil.getIp(player));
+        String ip = BaseConstants.CONFIG.getString("testIp", IpUtil.getIp(player));
         String region = getIpRegion(ip);
         BaseIpConstants.PLAYER_REGION_MAP.put(player.getUniqueId(), region);
     }

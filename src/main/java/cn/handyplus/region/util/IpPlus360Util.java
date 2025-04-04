@@ -1,5 +1,6 @@
 package cn.handyplus.region.util;
 
+import cn.handyplus.lib.constants.BaseConstants;
 import cn.handyplus.lib.core.HttpUtil;
 import cn.handyplus.lib.core.JsonUtil;
 import cn.handyplus.lib.core.StrUtil;
@@ -26,7 +27,7 @@ public class IpPlus360Util {
      * @param player 玩家
      */
     protected static void getPlayerRegion(Player player) {
-        String ip = ConfigUtil.CONFIG.getString("testIp", IpUtil.getIp(player));
+        String ip = BaseConstants.CONFIG.getString("testIp", IpUtil.getIp(player));
         String region = getIpRegion(ip, IpUtil.getIpType(player));
         BaseIpConstants.PLAYER_REGION_MAP.put(player.getUniqueId(), region);
     }
@@ -52,10 +53,10 @@ public class IpPlus360Util {
                     ipType = BaseIpConstants.IPV4;
                 }
             }
-            String ipPlus360Ipv4Key = ConfigUtil.CONFIG.getString("ipPlus360Ipv4Key", "123456");
-            String ipPlus360Ipv6Key = ConfigUtil.CONFIG.getString("ipPlus360Ipv6Key", "123456");
-            String testIp4 = ConfigUtil.CONFIG.getString("testIp4", "");
-            String testIp6 = ConfigUtil.CONFIG.getString("testIp6", "");
+            String ipPlus360Ipv4Key = BaseConstants.CONFIG.getString("ipPlus360Ipv4Key", "123456");
+            String ipPlus360Ipv6Key = BaseConstants.CONFIG.getString("ipPlus360Ipv6Key", "123456");
+            String testIp4 = BaseConstants.CONFIG.getString("testIp4", "");
+            String testIp6 = BaseConstants.CONFIG.getString("testIp6", "");
             String json = null;
             // 判断是何种类型
             if (StrUtil.isNotEmpty(testIp4) || BaseIpConstants.IPV4.equals(ipType)) {
@@ -64,7 +65,7 @@ public class IpPlus360Util {
                     return null;
                 }
                 ip = StrUtil.isNotEmpty(testIp4) ? testIp4 : ip;
-                String ipPlus360Ipv4Url = ConfigUtil.CONFIG.getString("ipPlus360Ipv4Url", BaseIpConstants.IP_PLUS_360_IPV4);
+                String ipPlus360Ipv4Url = BaseConstants.CONFIG.getString("ipPlus360Ipv4Url", BaseIpConstants.IP_PLUS_360_IPV4);
                 json = HttpUtil.get(ipPlus360Ipv4Url + "?key=" + ipPlus360Ipv4Key + "&ip=" + ip + "&coordsys=WGS84");
             } else if (StrUtil.isNotEmpty(testIp6) || BaseIpConstants.IPV6.equals(ipType)) {
                 // 未填写key
@@ -72,7 +73,7 @@ public class IpPlus360Util {
                     return null;
                 }
                 ip = StrUtil.isNotEmpty(testIp6) ? testIp6 : ip;
-                String ipPlus360Ipv6Url = ConfigUtil.CONFIG.getString("ipPlus360Ipv6Url", BaseIpConstants.IP_PLUS_360_IPV6);
+                String ipPlus360Ipv6Url = BaseConstants.CONFIG.getString("ipPlus360Ipv6Url", BaseIpConstants.IP_PLUS_360_IPV6);
                 json = HttpUtil.get(ipPlus360Ipv6Url + "?key=" + ipPlus360Ipv6Key + "&ip=" + ip + "&coordsys=WGS84");
             }
             // 未获取到数据
