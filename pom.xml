@@ -45,49 +45,6 @@
                     </compilerArgs>
                 </configuration>
             </plugin>
-            <!--将依赖的jar包打包到当前jar包-->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>3.6.0</version>
-                <configuration>
-                    <createDependencyReducedPom>false</createDependencyReducedPom>
-                    <artifactSet>
-                        <includes>
-                            <include>cn.handyplus.lib:*:*:*</include>
-                            <include>org.lionsoul:*:*:*</include>
-                        </includes>
-                    </artifactSet>
-                    <relocations>
-                        <relocation>
-                            <pattern>cn.handyplus.lib</pattern>
-                            <shadedPattern>cn.handyplus.region.lib</shadedPattern>
-                        </relocation>
-                        <relocation>
-                            <pattern>org.lionsoul</pattern>
-                            <shadedPattern>cn.handyplus.region.lionsoul</shadedPattern>
-                        </relocation>
-                    </relocations>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                        <configuration>
-                            <filters>
-                                <filter>
-                                    <artifact>*:*</artifact>
-                                    <excludes>
-                                        <exclude>META-INF/MANIFEST.MF</exclude>
-                                    </excludes>
-                                </filter>
-                            </filters>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
 
