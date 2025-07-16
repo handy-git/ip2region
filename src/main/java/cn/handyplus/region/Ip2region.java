@@ -7,6 +7,9 @@ import cn.handyplus.region.util.ConfigUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * 主类
  *
@@ -24,6 +27,19 @@ public class Ip2region extends JavaPlugin {
         ConfigUtil.init();
         // 加载变量
         new PlaceholderUtil(this).register();
+        // 打印 logo
+        List<String> asciiArt = Arrays.asList(
+                "",
+                "  ___      ____                 _             ",
+                " |_ _|_ __|___ \\ _ __ ___  __ _(_) ___  _ __  ",
+                "  | || '_ \\ __) | '__/ _ \\/ _` | |/ _ \\| '_ \\ ",
+                "  | || |_) / __/| | |  __/ (_| | | (_) | | | |",
+                " |___| .__/_____|_|  \\___|\\__, |_|\\___/|_| |_|",
+                "     |_|                  |___/               "
+        );
+        for (String line : asciiArt) {
+            MessageUtil.sendConsoleMessage(ChatColor.DARK_AQUA + line);
+        }
         // 初始化
         initApi.initListener("cn.handyplus.region.listener")
                 .initCommand("cn.handyplus.region.command")

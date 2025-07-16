@@ -4,7 +4,6 @@ import cn.handyplus.lib.constants.BaseConstants;
 import cn.handyplus.lib.core.StrUtil;
 import cn.handyplus.region.Ip2region;
 import cn.handyplus.region.constants.BaseIpConstants;
-import cn.handyplus.region.util.ConfigUtil;
 import cn.handyplus.region.util.IpUtil;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.OfflinePlayer;
