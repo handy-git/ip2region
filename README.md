@@ -85,6 +85,10 @@ testIp4: test IPv4 address
 testIp6: test IPv6 address
 ```
 
+## Page Views Count
+
+![Page Views Count](https://badges.toozhao.com/badges/01JHVE4A6W89JQD1KP9D8SPM0J/green.svg)
+
 ## GITHUB Automatic Build Download Channel:
 
 [GITHUB ACTIONS](https://github.com/handy-git/ip2region/actions)

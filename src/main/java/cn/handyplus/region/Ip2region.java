@@ -2,13 +2,16 @@ package cn.handyplus.region;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * 主类
  *
  * @author handy
  */
 public class Ip2region extends JavaPlugin {
-    private static Ip2region INSTANCE;
+    public static Ip2region INSTANCE;
 
     @Override
     public void onEnable() {
@@ -17,10 +20,6 @@ public class Ip2region extends JavaPlugin {
 
     @Override
     public void onDisable() {
-    }
-
-    public static Ip2region getInstance() {
-        return INSTANCE;
     }
 
 }
