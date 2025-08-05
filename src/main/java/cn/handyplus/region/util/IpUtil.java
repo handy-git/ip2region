@@ -60,6 +60,14 @@ public class IpUtil {
         if (IpGetTypeEnum.IP_API.getIpGetType().equalsIgnoreCase(dataSource)) {
             return IpApiUtil.getIpRegion(ip);
         }
+        // 请求 whois 模式
+        if (IpGetTypeEnum.WHOIS.getIpGetType().equalsIgnoreCase(dataSource)) {
+            return WhoisUtil.getIpRegion(ip);
+        }
+        // 请求 voreApi 模式
+        if (IpGetTypeEnum.VORE_API.getIpGetType().equalsIgnoreCase(dataSource)) {
+            return VoreApiUtil.getIpRegion(ip);
+        }
         return null;
     }
 

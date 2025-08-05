@@ -20,7 +20,12 @@ public enum IpGetTypeEnum {
 
     IP_PLUS_360("ipPlus360"),
 
-    IP_API("ipApi");
+    IP_API("ipApi"),
+
+    WHOIS("whois"),
+
+    VORE_API("voreApi"),
+    ;
 
     public final String ipGetType;
 

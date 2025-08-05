@@ -3,6 +3,9 @@ package cn.handyplus.region.param;
 import lombok.Data;
 
 /**
+ * ipPlus360
+ * <a href="https://mall.ipplus360.com/">ipPlus360</a>
+ *
  * @author handy
  * @since 1.1.0
  */

@@ -6,16 +6,17 @@ import cn.handyplus.lib.core.JsonUtil;
 import cn.handyplus.lib.core.StrUtil;
 import cn.handyplus.lib.util.MessageUtil;
 import cn.handyplus.region.constants.BaseIpConstants;
-import cn.handyplus.region.param.IpApiParam;
+import cn.handyplus.region.param.VoreApiParam;
 import org.bukkit.entity.Player;
 
 /**
- * 对接 ip-api.com api
+ * 对接 VORE-API
+ * <a href="https://api.vore.top">VORE-API</a>
  *
  * @author handy
- * @since 1.1.0
+ * @since 1.3.0
  */
-public class IpApiUtil {
+public class VoreApiUtil {
 
     /**
      * 获取地址
@@ -33,25 +34,24 @@ public class IpApiUtil {
      *
      * @param ip Ip
      * @return 地址
-     * @since 1.1.3
      */
     protected static String getIpRegion(String ip) {
         if (StrUtil.isEmpty(ip)) {
             return null;
         }
         try {
-            String json = HttpUtil.get(BaseIpConstants.IP_API_IPV4 + ip + "?lang=zh-CN");
+            String json = HttpUtil.get(BaseIpConstants.VORE_API + ip);
             // 未获取到数据
             if (StrUtil.isEmpty(json)) {
                 return null;
             }
-            IpApiParam ipApiParam = JsonUtil.toBean(json, IpApiParam.class);
+            VoreApiParam voreApiParam = JsonUtil.toBean(json, VoreApiParam.class);
             // 转换异常
-            if (!BaseIpConstants.SUCCESS.equalsIgnoreCase(ipApiParam.getStatus())) {
-                MessageUtil.sendConsoleMessage(ipApiParam.getMessage());
+            if (!BaseIpConstants.SUCCESS.equalsIgnoreCase(voreApiParam.getMsg())) {
+                MessageUtil.sendConsoleMessage(voreApiParam.getMsg());
                 return null;
             }
-            return IpUtil.getStr(ipApiParam.getCountry()) + "|" + "0" + "|" + IpUtil.getStr(ipApiParam.getCity()) + "|" + IpUtil.getStr(ipApiParam.getRegionName()) + "|" + "0";
+            return IpUtil.getStr("0" + "|" + "0" + "|" + IpUtil.getStr(voreApiParam.getIpdata().getInfo1()) + "|" + IpUtil.getStr(voreApiParam.getIpdata().getInfo1()) + "|" + IpUtil.getStr(voreApiParam.getIpdata().getIsp()) + "|" + IpUtil.getStr(voreApiParam.getIpdata().getInfo3()));
         } catch (Exception ignored) {
         }
         return null;

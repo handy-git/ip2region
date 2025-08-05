@@ -45,6 +45,20 @@ public abstract class BaseIpConstants {
     public final static String IP_API_IPV4 = "http://ip-api.com/json/";
 
     /**
+     * whois api地址
+     *
+     * @since 1.3.0
+     */
+    public final static String WHOIS_API = "https://whois.pconline.com.cn/ipJson.jsp?json=true&ip=";
+
+    /**
+     * VORE-API api地址
+     *
+     * @since 1.3.0
+     */
+    public final static String VORE_API = "https://api.vore.top/api/IPdata?ip=";
+
+    /**
      * IP
      */
     public final static String IP = "ip";

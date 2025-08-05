@@ -4,18 +4,17 @@ import cn.handyplus.lib.constants.BaseConstants;
 import cn.handyplus.lib.core.HttpUtil;
 import cn.handyplus.lib.core.JsonUtil;
 import cn.handyplus.lib.core.StrUtil;
-import cn.handyplus.lib.util.MessageUtil;
 import cn.handyplus.region.constants.BaseIpConstants;
-import cn.handyplus.region.param.IpApiParam;
+import cn.handyplus.region.param.WhoisParam;
 import org.bukkit.entity.Player;
 
 /**
- * 对接 ip-api.com api
+ * 对接 太平洋网络IP地址 api
  *
  * @author handy
- * @since 1.1.0
+ * @since 1.3.0
  */
-public class IpApiUtil {
+public class WhoisUtil {
 
     /**
      * 获取地址
@@ -33,25 +32,19 @@ public class IpApiUtil {
      *
      * @param ip Ip
      * @return 地址
-     * @since 1.1.3
      */
     protected static String getIpRegion(String ip) {
         if (StrUtil.isEmpty(ip)) {
             return null;
         }
         try {
-            String json = HttpUtil.get(BaseIpConstants.IP_API_IPV4 + ip + "?lang=zh-CN");
+            String json = HttpUtil.get(BaseIpConstants.WHOIS_API + ip);
             // 未获取到数据
             if (StrUtil.isEmpty(json)) {
                 return null;
             }
-            IpApiParam ipApiParam = JsonUtil.toBean(json, IpApiParam.class);
-            // 转换异常
-            if (!BaseIpConstants.SUCCESS.equalsIgnoreCase(ipApiParam.getStatus())) {
-                MessageUtil.sendConsoleMessage(ipApiParam.getMessage());
-                return null;
-            }
-            return IpUtil.getStr(ipApiParam.getCountry()) + "|" + "0" + "|" + IpUtil.getStr(ipApiParam.getCity()) + "|" + IpUtil.getStr(ipApiParam.getRegionName()) + "|" + "0";
+            WhoisParam whoisParam = JsonUtil.toBean(json, WhoisParam.class);
+            return IpUtil.getStr("0" + "|" + "0" + "|" + IpUtil.getStr(whoisParam.getPro()) + "|" + IpUtil.getStr(whoisParam.getCity()) + "|" + "0" + "|" + IpUtil.getStr(whoisParam.getRegion()));
         } catch (Exception ignored) {
         }
         return null;
