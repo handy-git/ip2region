@@ -8,7 +8,7 @@ public class VoreApiUtilTest {
     @Test
     public void getIpRegion() {
         String ipRegion = VoreApiUtil.getIpRegion("119.75.217.109");
-        Assertions.assertEquals("0|0|北京市|北京市|百度|0", ipRegion);
+        Assertions.assertEquals("0|0|北京市|海淀区|百度|0", ipRegion);
     }
 
 }
