@@ -36,7 +36,7 @@ public class IpPlus360Util {
      * 获取地址
      *
      * @param ip Ip
-     * @return 地址
+     * @return 国家|0|省份|城市|运营商|区县
      * @since 1.1.3
      */
     protected static String getIpRegion(String ip, String ipType) {

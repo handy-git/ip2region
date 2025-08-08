@@ -28,7 +28,7 @@ public class SearcherUtil {
      * 获取地址
      *
      * @param ip Ip
-     * @return 地址
+     * @return 国家|区域|省份|城市|ISP
      * @since 1.0.3
      */
     protected static String getIpRegion(String ip) {

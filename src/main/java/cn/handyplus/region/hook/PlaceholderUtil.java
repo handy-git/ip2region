@@ -45,7 +45,7 @@ public class PlaceholderUtil extends PlaceholderExpansion {
         if (player == null) {
             return null;
         }
-        // %ip2region_ip%
+        // %ip2region_ip% IP地址
         if (BaseIpConstants.IP.equals(identifier)) {
             if (player.getPlayer() == null) {
                 return null;
@@ -58,11 +58,17 @@ public class PlaceholderUtil extends PlaceholderExpansion {
             return BaseIpConstants.UNKNOWN;
         }
         List<String> list = StrUtil.strToStrList(region, "\\|");
+        // 国家
         String national = list.get(0);
+        // 省份
         String provincial = list.get(2);
+        // 市
         String municipal = list.get(3);
+        // 运营商
         String serviceProvider = list.get(4);
+        // 区/县
         String district = "0";
+        // 如果有区/县信息则赋值
         if (list.size() > 5) {
             district = list.get(5);
         }
@@ -74,16 +80,16 @@ public class PlaceholderUtil extends PlaceholderExpansion {
         if (!showEnable) {
             return unknown;
         }
-        // %ip2region_region%
+        // %ip2region_region% 总区域
         if ("region".equals(identifier)) {
             return region;
         }
-        // %ip2region_national%
+        // %ip2region_national% 国家
         if ("national".equals(identifier)) {
             return "0".equals(national) ? unknown : national;
         }
         boolean removeProvinceAndCity = BaseConstants.CONFIG.getBoolean("removeProvinceAndCity");
-        // %ip2region_provincial%
+        // %ip2region_provincial% 省份
         if ("provincial".equals(identifier)) {
             String provincialStr = "0".equals(provincial) ? unknown : provincial;
             if (BaseIpConstants.LOCAL.equals(provincialStr)) {
@@ -91,7 +97,7 @@ public class PlaceholderUtil extends PlaceholderExpansion {
             }
             return removeProvinceAndCity ? provincialStr.replace("省", "") : provincialStr;
         }
-        // %ip2region_municipal%
+        // %ip2region_municipal% 市
         if ("municipal".equals(identifier)) {
             String municipalStr = "0".equals(municipal) ? unknown : municipal;
             if (BaseIpConstants.LOCAL.equals(municipalStr)) {
@@ -99,11 +105,11 @@ public class PlaceholderUtil extends PlaceholderExpansion {
             }
             return removeProvinceAndCity ? municipalStr.replace("市", "") : municipalStr;
         }
-        // %ip2region_serviceProvider%
+        // %ip2region_serviceProvider% 运营商
         if ("serviceProvider".equals(identifier)) {
             return "0".equals(serviceProvider) ? unknown : serviceProvider;
         }
-        // %ip2region_district%
+        // %ip2region_district% 区/县
         if ("district".equals(identifier)) {
             return "0".equals(district) ? unknown : district;
         }

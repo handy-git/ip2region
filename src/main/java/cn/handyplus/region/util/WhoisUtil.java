@@ -31,7 +31,7 @@ public class WhoisUtil {
      * 获取地址
      *
      * @param ip Ip
-     * @return 地址
+     * @return 0|0|省份|城市|0|区县
      */
     protected static String getIpRegion(String ip) {
         if (StrUtil.isEmpty(ip)) {

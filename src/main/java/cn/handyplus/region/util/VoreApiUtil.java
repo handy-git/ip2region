@@ -33,7 +33,7 @@ public class VoreApiUtil {
      * 获取地址
      *
      * @param ip Ip
-     * @return 地址
+     * @return 0|0|省份|城市|运营商|区县
      */
     protected static String getIpRegion(String ip) {
         if (StrUtil.isEmpty(ip)) {
@@ -51,7 +51,7 @@ public class VoreApiUtil {
                 MessageUtil.sendConsoleMessage(voreApiParam.getMsg());
                 return null;
             }
-            return IpUtil.getStr("0" + "|" + "0" + "|" + IpUtil.getStr(voreApiParam.getIpdata().getInfo1()) + "|" + IpUtil.getStr(voreApiParam.getIpdata().getInfo1()) + "|" + IpUtil.getStr(voreApiParam.getIpdata().getIsp()) + "|" + IpUtil.getStr(voreApiParam.getIpdata().getInfo3()));
+            return IpUtil.getStr("0" + "|" + "0" + "|" + IpUtil.getStr(voreApiParam.getIpdata().getInfo1()) + "|" + IpUtil.getStr(voreApiParam.getIpdata().getInfo2()) + "|" + IpUtil.getStr(voreApiParam.getIpdata().getIsp()) + "|" + IpUtil.getStr(voreApiParam.getIpdata().getInfo3()));
         } catch (Exception ignored) {
         }
         return null;

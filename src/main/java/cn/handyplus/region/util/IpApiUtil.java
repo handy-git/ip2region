@@ -32,7 +32,7 @@ public class IpApiUtil {
      * 获取地址
      *
      * @param ip Ip
-     * @return 地址
+     * @return 国家|0|省份|城市|运营商
      * @since 1.1.3
      */
     protected static String getIpRegion(String ip) {
@@ -51,7 +51,7 @@ public class IpApiUtil {
                 MessageUtil.sendConsoleMessage(ipApiParam.getMessage());
                 return null;
             }
-            return IpUtil.getStr(ipApiParam.getCountry()) + "|" + "0" + "|" + IpUtil.getStr(ipApiParam.getCity()) + "|" + IpUtil.getStr(ipApiParam.getRegionName()) + "|" + "0";
+            return IpUtil.getStr(ipApiParam.getCountry()) + "|" + "0" + "|" + IpUtil.getStr(ipApiParam.getRegionName()) + "|" + IpUtil.getStr(ipApiParam.getCity()) + "|" + IpUtil.getStr(ipApiParam.getIsp());
         } catch (Exception ignored) {
         }
         return null;

@@ -38,6 +38,14 @@ public class IpUtil {
         if (IpGetTypeEnum.IP_API.getIpGetType().equalsIgnoreCase(dataSource)) {
             IpApiUtil.getPlayerRegion(player);
         }
+        // 请求 whois 模式
+        if (IpGetTypeEnum.WHOIS.getIpGetType().equalsIgnoreCase(dataSource)) {
+            WhoisUtil.getPlayerRegion(player);
+        }
+        // 请求 voreApi 模式
+        if (IpGetTypeEnum.VORE_API.getIpGetType().equalsIgnoreCase(dataSource)) {
+            VoreApiUtil.getPlayerRegion(player);
+        }
     }
 
     /**
