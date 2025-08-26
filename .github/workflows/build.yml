@@ -47,3 +47,4 @@ jobs:
         with:
           name: Ip2region Artifacts
           path: ${{ env.JAR_PATH }}
+          retention-days: 7
