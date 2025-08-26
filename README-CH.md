@@ -88,10 +88,6 @@ testIp4: 测试IP
 testIp6: 测试IP
 ```
 
-## 本项目访问次数
-
-![Page Views Count](https://badges.toozhao.com/badges/01JHVE4A6W89JQD1KP9D8SPM0J/green.svg)
-
 ## GITHUB自动构建版本下载渠道:
 
 [GITHUB ACTIONS](https://github.com/handy-git/ip2region/actions)

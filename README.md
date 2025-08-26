@@ -90,10 +90,6 @@ testIp4: test IP
 testIp6: test IP
 ```
 
-## Project Page Views
-
-![Page Views Count](https://badges.toozhao.com/badges/01JHVE4A6W89JQD1KP9D8SPM0J/green.svg)
-
 ## Download GitHub CI Builds:
 
 [GITHUB ACTIONS](https://github.com/handy-git/ip2region/actions)
