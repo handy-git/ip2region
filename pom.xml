@@ -36,6 +36,13 @@
         </dependency>
     </dependencies>
 
+    <distributionManagement>
+        <repository>
+            <id>handy-repository</id>
+            <url>https://nexus.handyplus.cn/releases</url>
+        </repository>
+    </distributionManagement>
+
     <build>
         <plugins>
             <!--指定1.8jdk-->
