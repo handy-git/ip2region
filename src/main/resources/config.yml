@@ -15,7 +15,7 @@ unknown: "未知"
 local: "内网IP"
 
 # 数据来源 自己选择一个最准确的即可
-# offline 本地数据源模式(只支持ipv4 百分之99.9数据准确性)
+# offline 本地数据源模式(支持ipv4/ipv6 百分之99.9数据准确性)
 # ipPlus360 在线api模式(支持ipv4/ipv6 付费 必需先购买key填下面)
 # ipApi 在线api模式(支持ipv4/ipv6 免费 限制 每分钟请求 45 次,也就是一分钟服务器同时进45人 官网:https://ip-api.com)
 # whois 在线api模式(支持ipv4/ipv6 免费 太平洋网络IP地址 官网:https://whois.pconline.com.cn)
