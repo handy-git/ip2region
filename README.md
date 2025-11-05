@@ -43,7 +43,7 @@ This plugin currently registers the following PAPI variables (requires: Placehol
 > The plugin currently supports five methods for getting IP geolocation.  
 > If you have your own ideas or channels, feel free to let me know for integration.
 
-1. offline - Local data source mode (IPv4 only, ~99% accuracy)
+1. offline - Local data source mode (IPv4/IPv6, ~99% accuracy)
 2. [ipPlus360](https://mall.ipplus360.com/) - Online API mode (IPv4/IPv6, paid)
 3. [ipApi](https://ip-api.com/) - Online API mode (IPv4/IPv6, free with rate limits)
 4. [whois](https://whois.pconline.com.cn/) - Online API mode (IPv4/IPv6, free)
@@ -53,7 +53,7 @@ This plugin currently registers the following PAPI variables (requires: Placehol
 
 | Type             | Cost | Accuracy | Network Required | IP Support  | Max Level      | Website                                           |
 |------------------|------|----------|------------------|-------------|----------------|---------------------------------------------------|
-| offline          | Free | 99%      | No               | IPv4        | City level     | [Site](https://github.com/lionsoul2014/ip2region) |
+| offline          | Free | 99%      | No               | IPv4 & IPv6 | City level     | [Site](https://github.com/lionsoul2014/ip2region) |
 | ipPlus360        | Paid | 99.999%  | Yes              | IPv4 & IPv6 | District level | [Site](https://mall.ipplus360.com/)               |
 | ipApi            | Free | 99.9%    | Yes              | IPv4 & IPv6 | City level     | [Site](https://ip-api.com/)                       |
 | whois (1.3.0+)   | Free | 99.9%    | Yes              | IPv4 & IPv6 | District level | [Site](https://whois.pconline.com.cn/)            |

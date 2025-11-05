@@ -43,7 +43,7 @@
 > 本插件目前默认有五种方式获取ip归属地  
 > 如果你有你的想法或渠道也可以让我添加
 
-1. offline 本地数据源模式(只支持ipv4 99%数据准确性)
+1. offline 本地数据源模式(支持ipv4/ipv6 99%数据准确性)
 2. [ipPlus360](https://mall.ipplus360.com/) 在线api模式(支持ipv4/ipv6,付费)
 3. [ipApi](https://ip-api.com/) 在线api模式(支持ipv4/ipv6,免费但是有分钟请求次数限制)
 4. [whois](https://whois.pconline.com.cn/) 在线api模式(支持ipv4/ipv6,免费)
@@ -53,7 +53,7 @@
 
 | 类型              | 费用 | 数据准确度   | 是否需要网络 | 支持网络      | 支持级别(最高) | 官网                                              |
 |-----------------|----|---------|--------|-----------|----------|-------------------------------------------------|
-| offline         | 免费 | 99%     | 不需     | ipv4      | 城市级      | [官网](https://github.com/lionsoul2014/ip2region) |
+| offline         | 免费 | 99%     | 不需     | ipv4和ipv6 | 城市级      | [官网](https://github.com/lionsoul2014/ip2region) |
 | ipPlus360       | 付费 | 99.999% | 需      | ipv4和ipv6 | 区县级      | [官网](https://mall.ipplus360.com/)               |
 | ipApi           | 免费 | 99.9%   | 需      | ipv4和ipv6 | 城市级      | [官网](https://ip-api.com/)                       |
 | whois(1.3.0+)   | 免费 | 99.9%   | 需      | ipv4和ipv6 | 区县级      | [官网](https://whois.pconline.com.cn/)            |
