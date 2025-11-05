@@ -4,7 +4,10 @@ import cn.handyplus.lib.constants.BaseConstants;
 import cn.handyplus.lib.core.StrUtil;
 import cn.handyplus.region.constants.BaseIpConstants;
 import cn.handyplus.region.constants.IpGetTypeEnum;
+import lombok.SneakyThrows;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
+import org.lionsoul.ip2region.xdb.Version;
 
 import java.net.Inet4Address;
 import java.net.Inet6Address;
@@ -91,6 +94,18 @@ public class IpUtil {
             return null;
         }
         return address.getAddress().getHostAddress();
+    }
+
+    /**
+     * 获取ip 类型
+     *
+     * @param ip IP 地址
+     * @return ip
+     */
+    @SneakyThrows
+    public static @NotNull Version getIpVersion(@NotNull String ip) {
+        InetAddress inetAddress = InetAddress.getByName(ip);
+        return (inetAddress instanceof Inet6Address) ? Version.IPv6 : Version.IPv4;
     }
 
     /**

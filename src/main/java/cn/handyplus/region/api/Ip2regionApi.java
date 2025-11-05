@@ -18,7 +18,7 @@ public class Ip2regionApi {
      * 获取总区域
      *
      * @param ip ip地址
-     * @return 例如 中国上海上海市电信
+     * @return 例如 中国|北京|北京市|电信
      */
     public static String getRegion(String ip) {
         String ipRegion = IpUtil.getIpRegion(ip);
@@ -48,7 +48,7 @@ public class Ip2regionApi {
      * 获取省
      *
      * @param ip ip地址
-     * @return 例如 上海
+     * @return 例如 北京
      */
     public static String getProvincial(String ip) {
         String region = IpUtil.getIpRegion(ip);
@@ -56,7 +56,7 @@ public class Ip2regionApi {
             return BaseIpConstants.UNKNOWN;
         }
         List<String> list = StrUtil.strToStrList(region, "\\|");
-        String provincial = list.get(2);
+        String provincial = list.get(1);
         return "0".equals(provincial) ? BaseIpConstants.UNKNOWN : provincial;
     }
 
@@ -64,7 +64,7 @@ public class Ip2regionApi {
      * 获取市
      *
      * @param ip ip地址
-     * @return 例如 上海市
+     * @return 例如 北京市
      */
     public static String getMunicipal(String ip) {
         String region = IpUtil.getIpRegion(ip);
@@ -72,7 +72,7 @@ public class Ip2regionApi {
             return BaseIpConstants.UNKNOWN;
         }
         List<String> list = StrUtil.strToStrList(region, "\\|");
-        String municipal = list.get(3);
+        String municipal = list.get(2);
         return "0".equals(municipal) ? BaseIpConstants.UNKNOWN : municipal;
     }
 
@@ -88,7 +88,27 @@ public class Ip2regionApi {
             return BaseIpConstants.UNKNOWN;
         }
         List<String> list = StrUtil.strToStrList(region, "\\|");
-        String serviceProvider = list.get(4);
+        String serviceProvider = list.get(3);
+        return "0".equals(serviceProvider) ? BaseIpConstants.UNKNOWN : serviceProvider;
+    }
+
+    /**
+     * 获取区/县
+     *
+     * @param ip ip 地址
+     * @return 例如 浦东新区
+     * @since 2.0.0
+     */
+    public static String getDistrict(String ip) {
+        String region = IpUtil.getIpRegion(ip);
+        if (StrUtil.isEmpty(region)) {
+            return BaseIpConstants.UNKNOWN;
+        }
+        List<String> list = StrUtil.strToStrList(region, "\\|");
+        String serviceProvider = null;
+        if (list.size() > 4) {
+            serviceProvider = list.get(4);
+        }
         return "0".equals(serviceProvider) ? BaseIpConstants.UNKNOWN : serviceProvider;
     }
 

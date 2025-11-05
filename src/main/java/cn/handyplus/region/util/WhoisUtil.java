@@ -44,7 +44,7 @@ public class WhoisUtil {
                 return null;
             }
             WhoisParam whoisParam = JsonUtil.toBean(json, WhoisParam.class);
-            return IpUtil.getStr("0" + "|" + "0" + "|" + IpUtil.getStr(whoisParam.getPro()) + "|" + IpUtil.getStr(whoisParam.getCity()) + "|" + "0" + "|" + IpUtil.getStr(whoisParam.getRegion()));
+            return IpUtil.getStr("0" + "|" + IpUtil.getStr(whoisParam.getPro()) + "|" + IpUtil.getStr(whoisParam.getCity()) + "|" + "0" + "|" + IpUtil.getStr(whoisParam.getRegion()));
         } catch (Exception ignored) {
         }
         return null;

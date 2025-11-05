@@ -5,6 +5,7 @@ import cn.handyplus.lib.core.StrUtil;
 import cn.handyplus.region.constants.BaseIpConstants;
 import org.bukkit.entity.Player;
 import org.lionsoul.ip2region.xdb.Searcher;
+import org.lionsoul.ip2region.xdb.Version;
 
 /**
  * Searcher工具类
@@ -37,7 +38,8 @@ public class SearcherUtil {
         }
         try {
             // 1、创建 searcher 对象
-            Searcher searcher = Searcher.newWithFileOnly(ConfigUtil.DB_PATH);
+            Version ipVersion = IpUtil.getIpVersion(ip);
+            Searcher searcher = Searcher.newWithFileOnly(ipVersion, Version.IPv4.equals(ipVersion) ? ConfigUtil.V4_DB_PATH : ConfigUtil.V6_DB_PATH);
             // 2、查询
             String search = searcher.search(ip);
             // 3、关闭资源

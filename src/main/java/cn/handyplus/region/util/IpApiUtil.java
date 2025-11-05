@@ -51,7 +51,7 @@ public class IpApiUtil {
                 MessageUtil.sendConsoleMessage(ipApiParam.getMessage());
                 return null;
             }
-            return IpUtil.getStr(ipApiParam.getCountry()) + "|" + "0" + "|" + IpUtil.getStr(ipApiParam.getRegionName()) + "|" + IpUtil.getStr(ipApiParam.getCity()) + "|" + IpUtil.getStr(ipApiParam.getIsp());
+            return IpUtil.getStr(ipApiParam.getCountry()) + "|" + IpUtil.getStr(ipApiParam.getRegionName()) + "|" + IpUtil.getStr(ipApiParam.getCity()) + "|" + IpUtil.getStr(ipApiParam.getIsp());
         } catch (Exception ignored) {
         }
         return null;

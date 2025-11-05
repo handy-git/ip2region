@@ -61,16 +61,16 @@ public class PlaceholderUtil extends PlaceholderExpansion {
         // 国家
         String national = list.get(0);
         // 省份
-        String provincial = list.get(2);
+        String provincial = list.get(1);
         // 市
-        String municipal = list.get(3);
+        String municipal = list.get(2);
         // 运营商
-        String serviceProvider = list.get(4);
+        String serviceProvider = list.get(3);
         // 区/县
         String district = "0";
         // 如果有区/县信息则赋值
-        if (list.size() > 5) {
-            district = list.get(5);
+        if (list.size() > 4) {
+            district = list.get(4);
         }
         String unknown = BaseConstants.CONFIG.getString("unknown", BaseIpConstants.UNKNOWN);
         String local = BaseConstants.CONFIG.getString("local", BaseIpConstants.LOCAL);

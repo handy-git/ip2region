@@ -87,7 +87,7 @@ public class IpPlus360Util {
                 return null;
             }
             IpPlus360Param.IpPlus360ParamData data = ipPlus360Param.getData();
-            return IpUtil.getStr(data.getCountry()) + "|" + IpUtil.getStr(data.getContinent()) + "|" + IpUtil.getStr(data.getProv()) + "|" + IpUtil.getStr(data.getCity()) + "|" + IpUtil.getStr(data.getOwner() + "|" + IpUtil.getStr(data.getDistrict()));
+            return IpUtil.getStr(data.getCountry()) + "|" + IpUtil.getStr(data.getProv()) + "|" + IpUtil.getStr(data.getCity()) + "|" + IpUtil.getStr(data.getOwner() + "|" + IpUtil.getStr(data.getDistrict()));
         } catch (Exception ignored) {
         }
         return null;
