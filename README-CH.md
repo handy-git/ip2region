@@ -61,6 +61,11 @@
 
 ### 特别说明
 
+offline 类型从插件 2.0.0+开始不在内置数据需要自己下载后放到plugins/ip2region目录下
+
+123盘: [点击前往](https://www.123865.com/s/9DpPjv-ysdFh)  
+github: [点击前往](https://github.com/lionsoul2014/ip2region)
+
 ipPlus360 如需购买,推荐购买城市级  
 [ipv4](https://mall.ipplus360.com/pros/IPVFourGeoAPI)
 [ipv6](https://mall.ipplus360.com/pros/IPGeoAPI)

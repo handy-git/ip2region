@@ -61,6 +61,12 @@ This plugin currently registers the following PAPI variables (requires: Placehol
 
 ### Special Note
 
+For offline type starting from plugin version 2.0.0+, data is no longer built-in and needs to be downloaded manually and
+placed in the plugins/ip2region directory.
+
+123 Drive: [Click to Access](https://www.123865.com/s/9DpPjv-ysdFh)  
+GitHub: [Click to Access](https://github.com/lionsoul2014/ip2region)
+
 If you choose to purchase ipPlus360, city-level data is recommended:  
 [IPv4](https://mall.ipplus360.com/pros/IPVFourGeoAPI)  
 [IPv6](https://mall.ipplus360.com/pros/IPGeoAPI)
