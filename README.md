@@ -10,7 +10,7 @@ A simple and efficient geolocation plugin.
 
 If this plugin helps you, clicking the ⭐ Star in the upper right corner would be a great support to the author~
 
-## Placeholder Support:
+## Placeholder Support: 
 
 This plugin currently registers the following PAPI variables (requires: PlaceholderAPI)
 
