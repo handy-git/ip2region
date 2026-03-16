@@ -29,7 +29,7 @@ public class Ip2regionCommand implements TabExecutor {
         if (args.length < 1) {
             return true;
         }
-        HandyCommandWrapper.onCommand(sender, cmd, label, args, BaseUtil.getMsgNotColor("noPermission"));
+        HandyCommandWrapper.onCommand(sender, cmd, label, args, BaseUtil.getLangMsg("noPermission"));
         return true;
     }
 

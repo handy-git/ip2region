@@ -35,10 +35,10 @@ public class HideCommand implements IHandyCommandEvent {
     @Override
     public void onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         // 是否为玩家
-        Player player = AssertUtil.notPlayer(sender, BaseUtil.getMsgNotColor("noPlayerFailureMsg"));
+        Player player = AssertUtil.notPlayer(sender, BaseUtil.getLangMsg("noPlayerFailureMsg"));
         Ip2regionService.getInstance().update(player.getUniqueId().toString(), false);
         BaseIpConstants.PLAYER_SHOW_MAP.put(player.getUniqueId(), false);
-        MessageUtil.sendMessage(player, BaseUtil.getMsgNotColor("hideMsg"));
+        MessageUtil.sendMessage(player, BaseUtil.getLangMsg("hideMsg"));
     }
 
 }

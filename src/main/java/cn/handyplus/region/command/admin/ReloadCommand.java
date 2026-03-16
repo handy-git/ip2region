@@ -32,7 +32,7 @@ public class ReloadCommand implements IHandyCommandEvent {
     @Override
     public void onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         ConfigUtil.init();
-        MessageUtil.sendMessage(sender, BaseUtil.getMsgNotColor("reloadMsg"));
+        MessageUtil.sendMessage(sender, BaseUtil.getLangMsg("reloadMsg"));
     }
 
 }

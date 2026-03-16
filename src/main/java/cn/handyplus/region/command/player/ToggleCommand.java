@@ -38,7 +38,7 @@ public class ToggleCommand implements IHandyCommandEvent {
     @Override
     public void onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         // 是否为玩家
-        Player player = AssertUtil.notPlayer(sender, BaseUtil.getMsgNotColor("noPlayerFailureMsg"));
+        Player player = AssertUtil.notPlayer(sender, BaseUtil.getLangMsg("noPlayerFailureMsg"));
         Optional<Ip2regionEnter> ip2regionEnterOptional = Ip2regionService.getInstance().findByPlayerUuid(player.getUniqueId().toString());
         if (!ip2regionEnterOptional.isPresent()) {
             return;
@@ -46,7 +46,7 @@ public class ToggleCommand implements IHandyCommandEvent {
         Ip2regionEnter ip2regionEnter = ip2regionEnterOptional.get();
         Ip2regionService.getInstance().update(player.getUniqueId().toString(), !ip2regionEnter.getShowEnable());
         BaseIpConstants.PLAYER_SHOW_MAP.put(player.getUniqueId(), !ip2regionEnter.getShowEnable());
-        MessageUtil.sendMessage(player, BaseUtil.getMsgNotColor("toggleMsg"));
+        MessageUtil.sendMessage(player, BaseUtil.getLangMsg("toggleMsg"));
     }
 
 }
