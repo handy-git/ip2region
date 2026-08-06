@@ -25,6 +25,8 @@ public enum IpGetTypeEnum {
     WHOIS("whois"),
 
     VORE_API("voreApi"),
+
+    TENCENT("tencent"),
     ;
 
     public final String ipGetType;

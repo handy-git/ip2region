@@ -1,4 +1,4 @@
-# ip2region 
+# ip2region
 
 -------------------------------------------------------------------------------
 
@@ -40,7 +40,7 @@
 
 ### 数据来源
 
-> 本插件目前默认有五种方式获取ip归属地  
+> 本插件目前默认有六种方式获取ip归属地
 > 如果你有你的想法或渠道也可以让我添加
 
 1. offline 本地数据源模式(支持ipv4/ipv6 99%数据准确性)
@@ -48,16 +48,18 @@
 3. [ipApi](https://ip-api.com/) 在线api模式(支持ipv4/ipv6,免费但是有分钟请求次数限制)
 4. [whois](https://whois.pconline.com.cn/) 在线api模式(支持ipv4/ipv6,免费)
 5. [voreApi](https://api.vore.top) 在线api模式(支持ipv4/ipv6,免费)
+6. [tencent](https://lbs.qq.com/) 腾讯地图在线api模式(需要应用Key和SecretKey)
 
 ### 优缺点分析
 
-| 类型              | 费用 | 数据准确度   | 是否需要网络 | 支持网络      | 支持级别(最高) | 官网                                              |
-|-----------------|----|---------|--------|-----------|----------|-------------------------------------------------|
-| offline         | 免费 | 99%     | 不需     | ipv4和ipv6 | 城市级      | [官网](https://github.com/lionsoul2014/ip2region) |
-| ipPlus360       | 付费 | 99.999% | 需      | ipv4和ipv6 | 区县级      | [官网](https://mall.ipplus360.com/)               |
-| ipApi           | 免费 | 99.9%   | 需      | ipv4和ipv6 | 城市级      | [官网](https://ip-api.com/)                       |
-| whois(1.3.0+)   | 免费 | 99.9%   | 需      | ipv4和ipv6 | 区县级      | [官网](https://whois.pconline.com.cn/)            |
-| voreApi(1.3.0+) | 免费 | 99.9%   | 需      | ipv4和ipv6 | 区县级      | [官网](https://api.vore.top)                      |
+| 类型              | 费用    | 数据准确度   | 是否需要网络 | 支持网络      | 支持级别(最高) | 官网                                              |
+|-----------------|-------|---------|--------|-----------|----------|-------------------------------------------------|
+| offline         | 免费    | 99%     | 不需     | ipv4和ipv6 | 城市级      | [官网](https://github.com/lionsoul2014/ip2region) |
+| ipPlus360       | 付费    | 99.999% | 需      | ipv4和ipv6 | 区县级      | [官网](https://mall.ipplus360.com/)               |
+| ipApi           | 免费    | 99.9%   | 需      | ipv4和ipv6 | 城市级      | [官网](https://ip-api.com/)                       |
+| whois(1.3.0+)   | 免费    | 99.9%   | 需      | ipv4和ipv6 | 区县级      | [官网](https://whois.pconline.com.cn/)            |
+| voreApi(1.3.0+) | 免费    | 99.9%   | 需      | ipv4和ipv6 | 区县级      | [官网](https://api.vore.top)                      |
+| tencent         | 按官方配额 | 以官方为准   | 需      | ipv4      | 区县级      | [官网](https://lbs.qq.com/)                       |
 
 ### 特别说明
 
@@ -78,9 +80,17 @@ ipPlus360Ipv4Url: "https://api.ipplus360.com/ip/geo/v1/district/"
 ipPlus360Ipv6Url: "https://api.ipplus360.com/ip/geo/v1/ipv6/district/"
 ```
 
+tencent 模式需要在腾讯地图控制台创建应用，开启 WebServiceAPI 并启用签名校验：
+
+```
+dataSource: tencent
+tencentAppKey: "应用Key"
+tencentAppSecret: "SecretKey"
+```
+
 ### 测试说明
 
-offline和ipApi模式 config.yml中添加 然后重载插件后测试玩家重新登录
+offline、ipApi和tencent模式 config.yml中添加 然后重载插件后测试玩家重新登录
 
 ```
 testIp: 测试IP

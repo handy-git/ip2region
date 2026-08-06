@@ -59,6 +59,11 @@ public abstract class BaseIpConstants {
     public final static String VORE_API = "https://api.vore.top/api/IPdata?ip=";
 
     /**
+     * 腾讯地图 IP 定位 api 地址
+     */
+    public final static String TENCENT_API = "https://apis.map.qq.com/ws/location/v1/ip";
+
+    /**
      * IP
      */
     public final static String IP = "ip";

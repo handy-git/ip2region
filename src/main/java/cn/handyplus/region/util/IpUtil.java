@@ -51,6 +51,10 @@ public class IpUtil {
         if (IpGetTypeEnum.VORE_API.getIpGetType().equalsIgnoreCase(dataSource)) {
             VoreApiUtil.getPlayerRegion(player);
         }
+        // 请求腾讯地图模式
+        if (IpGetTypeEnum.TENCENT.getIpGetType().equalsIgnoreCase(dataSource)) {
+            TencentIpUtil.getPlayerRegion(player);
+        }
         String region = convertRegion(BaseIpConstants.PLAYER_REGION_MAP.get(player.getUniqueId()));
         if (StrUtil.isEmpty(region)) {
             return;
@@ -86,6 +90,10 @@ public class IpUtil {
         // 请求 voreApi 模式
         if (IpGetTypeEnum.VORE_API.getIpGetType().equalsIgnoreCase(dataSource)) {
             region = VoreApiUtil.getIpRegion(ip);
+        }
+        // 请求腾讯地图模式
+        if (IpGetTypeEnum.TENCENT.getIpGetType().equalsIgnoreCase(dataSource)) {
+            region = TencentIpUtil.getIpRegion(ip);
         }
         return convertRegion(region);
     }

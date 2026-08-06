@@ -18,12 +18,17 @@ valueMapping:
 # ipApi 在线api模式(支持ipv4/ipv6 免费 限制 每分钟请求 45 次,也就是一分钟服务器同时进45人 官网:https://ip-api.com)
 # whois 在线api模式(支持ipv4/ipv6 免费 太平洋网络IP地址 官网:https://whois.pconline.com.cn)
 # voreApi 在线api模式(支持ipv4/ipv6 免费 vore-Api 官网:https://api.vore.top)
+# tencent 腾讯地图在线api模式(需要申请Key并开启WebServiceAPI签名校验 官网:https://lbs.qq.com)
 dataSource: offline
 
 # ipPlus360模式 ipv4在线归属地(有试用额度) 购买地址: https://mall.ipplus360.com/pros/IPVFourGeoAPI
 ipPlus360Ipv4Key: 123456
 # ipPlus360模式 ipv6在线归属地 购买地址: https://mall.ipplus360.com/pros/IPGeoAPI
 ipPlus360Ipv6Key: 123456
+
+# tencent模式 腾讯地图应用Key和SecretKey
+tencentAppKey: ""
+tencentAppSecret: ""
 
 # 是否开启更新提醒,建议开启
 isCheckUpdate: true
