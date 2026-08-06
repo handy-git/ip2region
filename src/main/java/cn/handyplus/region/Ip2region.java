@@ -46,8 +46,8 @@ public class Ip2region extends JavaPlugin {
                 .enableSql("cn.handyplus.region.enter")
                 .addMetrics(16650)
                 .checkVersion();
-        MessageUtil.sendConsoleMessage(ChatColor.GREEN + "已成功载入服务器!");
-        MessageUtil.sendConsoleMessage(ChatColor.GREEN + "Author:handy WIKI: https://ricedoc.handyplus.cn/wiki/ip2region/README/");
+        MessageUtil.sendConsoleMessage(ChatColor.DARK_AQUA + "已成功载入服务器!");
+        MessageUtil.sendConsoleMessage(ChatColor.DARK_AQUA + "Author:handy WIKI: https://ricedoc.handyplus.cn/wiki/ip2region/README/");
     }
 
     @Override
