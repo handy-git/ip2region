@@ -113,7 +113,3 @@ testIp6: test IP
 ## Usage Statistics
 
 ![](https://bstats.org/signatures/bukkit/ip2region.svg)
-
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=handy-git/ip2region&type=Date)](https://star-history.com/#handy-git/ip2region&Date)
