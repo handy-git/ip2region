@@ -42,13 +42,13 @@ public class IpApiUtil {
         try {
             String json = HttpUtil.get(BaseIpConstants.IP_API_IPV4 + ip + "?lang=zh-CN");
             // 未获取到数据
-            if (StrUtil.isEmpty(json)) {
+            if (StrUtil.isEmpty(json) || !JsonUtil.isTypeJsonObject(json)) {
                 return null;
             }
             IpApiParam ipApiParam = JsonUtil.toBean(json, IpApiParam.class);
             // 转换异常
-            if (!BaseIpConstants.SUCCESS.equalsIgnoreCase(ipApiParam.getStatus())) {
-                MessageUtil.sendConsoleMessage(ipApiParam.getMessage());
+            if (ipApiParam == null || !BaseIpConstants.SUCCESS.equalsIgnoreCase(ipApiParam.getStatus())) {
+                MessageUtil.sendConsoleMessage(ipApiParam != null ? ipApiParam.getMessage() : "null");
                 return null;
             }
             return IpUtil.getStr(ipApiParam.getCountry()) + "|" + IpUtil.getStr(ipApiParam.getRegionName()) + "|" + IpUtil.getStr(ipApiParam.getCity()) + "|" + IpUtil.getStr(ipApiParam.getIsp());

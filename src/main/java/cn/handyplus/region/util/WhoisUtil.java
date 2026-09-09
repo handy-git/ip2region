@@ -40,11 +40,14 @@ public class WhoisUtil {
         try {
             String json = HttpUtil.get(BaseIpConstants.WHOIS_API + ip);
             // 未获取到数据
-            if (StrUtil.isEmpty(json)) {
+            if (StrUtil.isEmpty(json) || !JsonUtil.isTypeJsonObject(json)) {
                 return null;
             }
             WhoisParam whoisParam = JsonUtil.toBean(json, WhoisParam.class);
-            return IpUtil.getStr("0" + "|" + IpUtil.getStr(whoisParam.getPro()) + "|" + IpUtil.getStr(whoisParam.getCity()) + "|" + "0" + "|" + IpUtil.getStr(whoisParam.getRegion()));
+            if (whoisParam == null) {
+                return null;
+            }
+            return IpUtil.getStr("0") + "|" + IpUtil.getStr(whoisParam.getPro()) + "|" + IpUtil.getStr(whoisParam.getCity()) + "|" + "0" + "|" + IpUtil.getStr(whoisParam.getRegion());
         } catch (Exception ignored) {
         }
         return null;

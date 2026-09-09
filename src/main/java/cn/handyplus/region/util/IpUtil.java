@@ -31,29 +31,33 @@ public class IpUtil {
      */
     public static void getPlayerRegion(Player player) {
         String dataSource = BaseConstants.CONFIG.getString("dataSource", IpGetTypeEnum.OFFLINE.getIpGetType());
-        // 离线模式
-        if (IpGetTypeEnum.OFFLINE.getIpGetType().equalsIgnoreCase(dataSource)) {
-            SearcherUtil.getPlayerRegion(player);
-        }
-        // 请求 ipPlus360 模式
-        if (IpGetTypeEnum.IP_PLUS_360.getIpGetType().equalsIgnoreCase(dataSource)) {
-            IpPlus360Util.getPlayerRegion(player);
-        }
-        // 请求 ipApi 模式
-        if (IpGetTypeEnum.IP_API.getIpGetType().equalsIgnoreCase(dataSource)) {
-            IpApiUtil.getPlayerRegion(player);
-        }
-        // 请求 whois 模式
-        if (IpGetTypeEnum.WHOIS.getIpGetType().equalsIgnoreCase(dataSource)) {
-            WhoisUtil.getPlayerRegion(player);
-        }
-        // 请求 voreApi 模式
-        if (IpGetTypeEnum.VORE_API.getIpGetType().equalsIgnoreCase(dataSource)) {
-            VoreApiUtil.getPlayerRegion(player);
-        }
-        // 请求腾讯地图模式
-        if (IpGetTypeEnum.TENCENT.getIpGetType().equalsIgnoreCase(dataSource)) {
-            TencentIpUtil.getPlayerRegion(player);
+        switch (IpGetTypeEnum.fromType(dataSource)) {
+            // 离线模式
+            case OFFLINE:
+                SearcherUtil.getPlayerRegion(player);
+                break;
+            // 请求 ipPlus360 模式
+            case IP_PLUS_360:
+                IpPlus360Util.getPlayerRegion(player);
+                break;
+            // 请求 ipApi 模式
+            case IP_API:
+                IpApiUtil.getPlayerRegion(player);
+                break;
+            // 请求 Whois 模式
+            case WHOIS:
+                WhoisUtil.getPlayerRegion(player);
+                break;
+            // 请求 voreApi 模式
+            case VORE_API:
+                VoreApiUtil.getPlayerRegion(player);
+                break;
+            // 请求腾讯地图模式
+            case TENCENT:
+                TencentIpUtil.getPlayerRegion(player);
+                break;
+            default:
+                break;
         }
         String region = convertRegion(BaseIpConstants.PLAYER_REGION_MAP.get(player.getUniqueId()));
         if (StrUtil.isEmpty(region)) {
@@ -71,29 +75,33 @@ public class IpUtil {
     public static String getIpRegion(String ip) {
         String dataSource = BaseConstants.CONFIG.getString("dataSource", IpGetTypeEnum.OFFLINE.getIpGetType());
         String region = null;
-        // 离线模式
-        if (IpGetTypeEnum.OFFLINE.getIpGetType().equalsIgnoreCase(dataSource)) {
-            region = SearcherUtil.getIpRegion(ip);
-        }
-        // 请求 ipPlus360 模式
-        if (IpGetTypeEnum.IP_PLUS_360.getIpGetType().equalsIgnoreCase(dataSource)) {
-            region = IpPlus360Util.getIpRegion(ip, null);
-        }
-        // 请求 ipApi 模式
-        if (IpGetTypeEnum.IP_API.getIpGetType().equalsIgnoreCase(dataSource)) {
-            region = IpApiUtil.getIpRegion(ip);
-        }
-        // 请求 whois 模式
-        if (IpGetTypeEnum.WHOIS.getIpGetType().equalsIgnoreCase(dataSource)) {
-            region = WhoisUtil.getIpRegion(ip);
-        }
-        // 请求 voreApi 模式
-        if (IpGetTypeEnum.VORE_API.getIpGetType().equalsIgnoreCase(dataSource)) {
-            region = VoreApiUtil.getIpRegion(ip);
-        }
-        // 请求腾讯地图模式
-        if (IpGetTypeEnum.TENCENT.getIpGetType().equalsIgnoreCase(dataSource)) {
-            region = TencentIpUtil.getIpRegion(ip);
+        switch (IpGetTypeEnum.fromType(dataSource)) {
+            // 离线模式
+            case OFFLINE:
+                region = SearcherUtil.getIpRegion(ip);
+                break;
+            // 请求 ipPlus360 模式
+            case IP_PLUS_360:
+                region = IpPlus360Util.getIpRegion(ip, null);
+                break;
+            // 请求 ipApi 模式
+            case IP_API:
+                region = IpApiUtil.getIpRegion(ip);
+                break;
+            // 请求 Whois 模式
+            case WHOIS:
+                region = WhoisUtil.getIpRegion(ip);
+                break;
+            // 请求 voreApi 模式
+            case VORE_API:
+                region = VoreApiUtil.getIpRegion(ip);
+                break;
+            // 请求腾讯地图模式
+            case TENCENT:
+                region = TencentIpUtil.getIpRegion(ip);
+                break;
+            default:
+                break;
         }
         return convertRegion(region);
     }

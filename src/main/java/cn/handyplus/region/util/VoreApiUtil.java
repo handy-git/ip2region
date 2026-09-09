@@ -42,13 +42,16 @@ public class VoreApiUtil {
         try {
             String json = HttpUtil.get(BaseIpConstants.VORE_API + ip);
             // 未获取到数据
-            if (StrUtil.isEmpty(json)) {
+            if (StrUtil.isEmpty(json) || !JsonUtil.isTypeJsonObject(json)) {
                 return null;
             }
             VoreApiParam voreApiParam = JsonUtil.toBean(json, VoreApiParam.class);
             // 转换异常
-            if (!BaseIpConstants.SUCCESS.equalsIgnoreCase(voreApiParam.getMsg())) {
-                MessageUtil.sendConsoleMessage(voreApiParam.getMsg());
+            if (voreApiParam == null || !BaseIpConstants.SUCCESS.equalsIgnoreCase(voreApiParam.getMsg())) {
+                MessageUtil.sendConsoleMessage(voreApiParam != null ? voreApiParam.getMsg() : "null");
+                return null;
+            }
+            if (voreApiParam.getIpdata() == null) {
                 return null;
             }
             return IpUtil.getStr("0" + "|" + IpUtil.getStr(voreApiParam.getIpdata().getInfo1()) + "|" + IpUtil.getStr(voreApiParam.getIpdata().getInfo2()) + "|" + IpUtil.getStr(voreApiParam.getIpdata().getIsp()) + "|" + IpUtil.getStr(voreApiParam.getIpdata().getInfo3()));

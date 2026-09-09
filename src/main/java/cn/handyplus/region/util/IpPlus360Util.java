@@ -77,17 +77,20 @@ public class IpPlus360Util {
                 json = HttpUtil.get(ipPlus360Ipv6Url + "?key=" + ipPlus360Ipv6Key + "&ip=" + ip + "&coordsys=WGS84");
             }
             // 未获取到数据
-            if (StrUtil.isEmpty(json)) {
+            if (StrUtil.isEmpty(json) || !JsonUtil.isTypeJsonObject(json)) {
                 return null;
             }
             IpPlus360Param ipPlus360Param = JsonUtil.toBean(json, IpPlus360Param.class);
             // 转换异常
-            if (!BaseIpConstants.SUCCESS.equalsIgnoreCase(ipPlus360Param.getCode())) {
-                MessageUtil.sendConsoleMessage(ipPlus360Param.getMsg());
+            if (ipPlus360Param == null || !BaseIpConstants.SUCCESS.equalsIgnoreCase(ipPlus360Param.getCode())) {
+                MessageUtil.sendConsoleMessage(ipPlus360Param != null ? ipPlus360Param.getMsg() : "null");
                 return null;
             }
             IpPlus360Param.IpPlus360ParamData data = ipPlus360Param.getData();
-            return IpUtil.getStr(data.getCountry()) + "|" + IpUtil.getStr(data.getProv()) + "|" + IpUtil.getStr(data.getCity()) + "|" + IpUtil.getStr(data.getOwner() + "|" + IpUtil.getStr(data.getDistrict()));
+            if (data == null) {
+                return null;
+            }
+            return IpUtil.getStr(data.getCountry()) + "|" + IpUtil.getStr(data.getProv()) + "|" + IpUtil.getStr(data.getCity()) + "|" + IpUtil.getStr(data.getOwner()) + "|" + IpUtil.getStr(data.getDistrict());
         } catch (Exception ignored) {
         }
         return null;

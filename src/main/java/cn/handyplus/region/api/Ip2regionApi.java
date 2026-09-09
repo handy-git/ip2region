@@ -36,12 +36,8 @@ public class Ip2regionApi {
      */
     public static String getNational(String ip) {
         String region = IpUtil.getIpRegion(ip);
-        if (StrUtil.isEmpty(region)) {
-            return BaseIpConstants.UNKNOWN;
-        }
-        List<String> list = StrUtil.strToStrList(region, "\\|");
-        String national = list.get(0);
-        return "0".equals(national) ? BaseIpConstants.UNKNOWN : national;
+        String national = getRegionPartSafe(region, BaseIpConstants.INDEX_NATIONAL);
+        return formatRegionPart(national);
     }
 
     /**
@@ -52,12 +48,8 @@ public class Ip2regionApi {
      */
     public static String getProvincial(String ip) {
         String region = IpUtil.getIpRegion(ip);
-        if (StrUtil.isEmpty(region)) {
-            return BaseIpConstants.UNKNOWN;
-        }
-        List<String> list = StrUtil.strToStrList(region, "\\|");
-        String provincial = list.get(1);
-        return "0".equals(provincial) ? BaseIpConstants.UNKNOWN : provincial;
+        String provincial = getRegionPartSafe(region, BaseIpConstants.INDEX_PROVINCE);
+        return formatRegionPart(provincial);
     }
 
     /**
@@ -68,12 +60,8 @@ public class Ip2regionApi {
      */
     public static String getMunicipal(String ip) {
         String region = IpUtil.getIpRegion(ip);
-        if (StrUtil.isEmpty(region)) {
-            return BaseIpConstants.UNKNOWN;
-        }
-        List<String> list = StrUtil.strToStrList(region, "\\|");
-        String municipal = list.get(2);
-        return "0".equals(municipal) ? BaseIpConstants.UNKNOWN : municipal;
+        String municipal = getRegionPartSafe(region, BaseIpConstants.INDEX_CITY);
+        return formatRegionPart(municipal);
     }
 
     /**
@@ -84,12 +72,8 @@ public class Ip2regionApi {
      */
     public static String getServiceProvider(String ip) {
         String region = IpUtil.getIpRegion(ip);
-        if (StrUtil.isEmpty(region)) {
-            return BaseIpConstants.UNKNOWN;
-        }
-        List<String> list = StrUtil.strToStrList(region, "\\|");
-        String serviceProvider = list.get(3);
-        return "0".equals(serviceProvider) ? BaseIpConstants.UNKNOWN : serviceProvider;
+        String serviceProvider = getRegionPartSafe(region, BaseIpConstants.INDEX_ISP);
+        return formatRegionPart(serviceProvider);
     }
 
     /**
@@ -101,15 +85,39 @@ public class Ip2regionApi {
      */
     public static String getDistrict(String ip) {
         String region = IpUtil.getIpRegion(ip);
+        String district = getRegionPartSafe(region, BaseIpConstants.INDEX_DISTRICT);
+        return formatRegionPart(district);
+    }
+
+    /**
+     * 安全地根据索引获取地区分段
+     *
+     * @param region 地区字符串
+     * @param index  索引
+     * @return 地区分段值，如果无法获取则返回 null
+     */
+    private static String getRegionPartSafe(String region, int index) {
         if (StrUtil.isEmpty(region)) {
-            return BaseIpConstants.UNKNOWN;
+            return null;
         }
         List<String> list = StrUtil.strToStrList(region, "\\|");
-        String serviceProvider = null;
-        if (list.size() > 4) {
-            serviceProvider = list.get(4);
+        if (list.size() <= index) {
+            return null;
         }
-        return "0".equals(serviceProvider) ? BaseIpConstants.UNKNOWN : serviceProvider;
+        return list.get(index);
+    }
+
+    /**
+     * 根据地区分段获取值，处理 "0" 和空白的情况
+     *
+     * @param part 地区分段
+     * @return 处理后的值
+     */
+    private static String formatRegionPart(String part) {
+        if (StrUtil.isEmpty(part) || "0".equals(part)) {
+            return BaseIpConstants.UNKNOWN;
+        }
+        return part;
     }
 
 }
