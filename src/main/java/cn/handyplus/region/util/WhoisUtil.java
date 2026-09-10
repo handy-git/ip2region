@@ -40,7 +40,11 @@ public class WhoisUtil {
         try {
             String json = HttpUtil.get(BaseIpConstants.WHOIS_API + ip);
             // 未获取到数据
-            if (StrUtil.isEmpty(json) || !JsonUtil.isTypeJsonObject(json)) {
+            if (StrUtil.isEmpty(json)) {
+                return null;
+            }
+            json = json.trim();
+            if (!JsonUtil.isTypeJsonObject(json)) {
                 return null;
             }
             WhoisParam whoisParam = JsonUtil.toBean(json, WhoisParam.class);
