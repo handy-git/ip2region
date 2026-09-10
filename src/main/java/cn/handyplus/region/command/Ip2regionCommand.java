@@ -17,7 +17,6 @@ import java.util.List;
  */
 @HandyCommand(name = "ip2region")
 public class Ip2regionCommand implements TabExecutor {
-    private final static String PERMISSION = "ip2region.reload";
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String label, @NotNull String @NotNull [] args) {

@@ -12,6 +12,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -42,8 +43,11 @@ public class HandyLoginEventListener implements Listener {
                 Ip2regionService.getInstance().add(enter);
                 BaseIpConstants.PLAYER_SHOW_MAP.put(player.getUniqueId(), true);
             } else {
-                Ip2regionService.getInstance().updateIp(player);
                 Ip2regionEnter ip2regionEnter = ip2regionEnterOptional.get();
+                // ip未变化时不更新, 避免无效写库
+                if (!Objects.equals(ip2regionEnter.getIp(), IpUtil.getIp(player)) || !Objects.equals(ip2regionEnter.getIpType(), IpUtil.getIpType(player))) {
+                    Ip2regionService.getInstance().updateIp(player);
+                }
                 BaseIpConstants.PLAYER_SHOW_MAP.put(player.getUniqueId(), Boolean.TRUE.equals(ip2regionEnter.getShowEnable()));
             }
             IpUtil.getPlayerRegion(player);
