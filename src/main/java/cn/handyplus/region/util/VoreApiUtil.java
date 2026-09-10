@@ -22,11 +22,11 @@ public class VoreApiUtil {
      * 获取地址
      *
      * @param player 玩家
+     * @return 0|0|省份|城市|运营商|区县
      */
-    protected static void getPlayerRegion(Player player) {
+    protected static String getPlayerRegion(Player player) {
         String ip = BaseConstants.CONFIG.getString("testIp", IpUtil.getIp(player));
-        String region = getIpRegion(ip);
-        BaseIpConstants.PLAYER_REGION_MAP.put(player.getUniqueId(), region);
+        return getIpRegion(ip);
     }
 
     /**
@@ -54,7 +54,7 @@ public class VoreApiUtil {
             if (voreApiParam.getIpdata() == null) {
                 return null;
             }
-            return IpUtil.getStr("0" + "|" + IpUtil.getStr(voreApiParam.getIpdata().getInfo1()) + "|" + IpUtil.getStr(voreApiParam.getIpdata().getInfo2()) + "|" + IpUtil.getStr(voreApiParam.getIpdata().getIsp()) + "|" + IpUtil.getStr(voreApiParam.getIpdata().getInfo3()));
+            return IpUtil.getStr("0") + "|" + IpUtil.getStr(voreApiParam.getIpdata().getInfo1()) + "|" + IpUtil.getStr(voreApiParam.getIpdata().getInfo2()) + "|" + IpUtil.getStr(voreApiParam.getIpdata().getIsp()) + "|" + IpUtil.getStr(voreApiParam.getIpdata().getInfo3());
         } catch (Exception ignored) {
         }
         return null;

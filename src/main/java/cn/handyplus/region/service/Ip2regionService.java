@@ -6,6 +6,7 @@ import cn.handyplus.region.util.IpUtil;
 import org.bukkit.entity.Player;
 
 import java.util.Optional;
+import java.util.UUID;
 
 /**
  * 玩家IP数据显示记录
@@ -39,7 +40,7 @@ public class Ip2regionService {
      * @param playerUuid 玩家uid
      * @return 显示记录
      */
-    public Optional<Ip2regionEnter> findByPlayerUuid(String playerUuid) {
+    public Optional<Ip2regionEnter> findByPlayerUuid(UUID playerUuid) {
         Db<Ip2regionEnter> use = Db.use(Ip2regionEnter.class);
         use.where().eq(Ip2regionEnter::getPlayerUuid, playerUuid);
         return use.execution().selectOne();
@@ -63,7 +64,7 @@ public class Ip2regionService {
      * @param playerUuid 玩家uid
      * @param showEnable 是否显示
      */
-    public void update(String playerUuid, Boolean showEnable) {
+    public void update(UUID playerUuid, Boolean showEnable) {
         Db<Ip2regionEnter> use = Db.use(Ip2regionEnter.class);
         use.update().set(Ip2regionEnter::getShowEnable, showEnable);
         use.where().eq(Ip2regionEnter::getPlayerUuid, playerUuid);

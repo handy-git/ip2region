@@ -21,11 +21,11 @@ public class IpApiUtil {
      * 获取地址
      *
      * @param player 玩家
+     * @return 国家|0|省份|城市|运营商
      */
-    protected static void getPlayerRegion(Player player) {
+    protected static String getPlayerRegion(Player player) {
         String ip = BaseConstants.CONFIG.getString("testIp", IpUtil.getIp(player));
-        String region = getIpRegion(ip);
-        BaseIpConstants.PLAYER_REGION_MAP.put(player.getUniqueId(), region);
+        return getIpRegion(ip);
     }
 
     /**

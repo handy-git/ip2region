@@ -6,6 +6,8 @@ import cn.handyplus.lib.db.IndexEnum;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.UUID;
+
 /**
  * 玩家IP数据显示记录
  *
@@ -21,8 +23,8 @@ public class Ip2regionEnter {
     @TableField(value = "player_name", comment = "玩家名称")
     private String playerName;
 
-    @TableField(value = "player_uuid", comment = "玩家uuid", notNull = true, indexEnum = IndexEnum.INDEX)
-    private String playerUuid;
+    @TableField(value = "player_uuid", comment = "玩家uuid", notNull = true, indexEnum = IndexEnum.UNIQUE)
+    private UUID playerUuid;
 
     @TableField(value = "show_enable", comment = "是否显示")
     private Boolean showEnable;

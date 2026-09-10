@@ -31,11 +31,11 @@ public class HandyLoginEventListener implements Listener {
     public void onEvent(HandyLoginEvent event) {
         Player player = event.getPlayer();
         HandySchedulerUtil.runTaskAsynchronously(() -> {
-            Optional<Ip2regionEnter> ip2regionEnterOptional = Ip2regionService.getInstance().findByPlayerUuid(player.getUniqueId().toString());
+            Optional<Ip2regionEnter> ip2regionEnterOptional = Ip2regionService.getInstance().findByPlayerUuid(player.getUniqueId());
             if (!ip2regionEnterOptional.isPresent()) {
                 Ip2regionEnter enter = new Ip2regionEnter();
                 enter.setPlayerName(player.getName());
-                enter.setPlayerUuid(player.getUniqueId().toString());
+                enter.setPlayerUuid(player.getUniqueId());
                 enter.setShowEnable(true);
                 enter.setIp(IpUtil.getIp(player));
                 enter.setIpType(IpUtil.getIpType(player));
@@ -44,7 +44,7 @@ public class HandyLoginEventListener implements Listener {
             } else {
                 Ip2regionService.getInstance().updateIp(player);
                 Ip2regionEnter ip2regionEnter = ip2regionEnterOptional.get();
-                BaseIpConstants.PLAYER_SHOW_MAP.put(player.getUniqueId(), ip2regionEnter.getShowEnable());
+                BaseIpConstants.PLAYER_SHOW_MAP.put(player.getUniqueId(), Boolean.TRUE.equals(ip2regionEnter.getShowEnable()));
             }
             IpUtil.getPlayerRegion(player);
         });

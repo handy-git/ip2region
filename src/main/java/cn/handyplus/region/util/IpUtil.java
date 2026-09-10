@@ -31,35 +31,40 @@ public class IpUtil {
      */
     public static void getPlayerRegion(Player player) {
         String dataSource = BaseConstants.CONFIG.getString("dataSource", IpGetTypeEnum.OFFLINE.getIpGetType());
+        String region = null;
         switch (IpGetTypeEnum.fromType(dataSource)) {
             // 离线模式
             case OFFLINE:
-                SearcherUtil.getPlayerRegion(player);
+                region = SearcherUtil.getPlayerRegion(player);
                 break;
             // 请求 ipPlus360 模式
             case IP_PLUS_360:
-                IpPlus360Util.getPlayerRegion(player);
+                region = IpPlus360Util.getPlayerRegion(player);
                 break;
             // 请求 ipApi 模式
             case IP_API:
-                IpApiUtil.getPlayerRegion(player);
+                region = IpApiUtil.getPlayerRegion(player);
                 break;
             // 请求 Whois 模式
             case WHOIS:
-                WhoisUtil.getPlayerRegion(player);
+                region = WhoisUtil.getPlayerRegion(player);
                 break;
             // 请求 voreApi 模式
             case VORE_API:
-                VoreApiUtil.getPlayerRegion(player);
+                region = VoreApiUtil.getPlayerRegion(player);
                 break;
             // 请求腾讯地图模式
             case TENCENT:
-                TencentIpUtil.getPlayerRegion(player);
+                region = TencentIpUtil.getPlayerRegion(player);
                 break;
             default:
                 break;
         }
-        String region = convertRegion(BaseIpConstants.PLAYER_REGION_MAP.get(player.getUniqueId()));
+        // 查询为异步执行, 期间玩家可能已退出, 此时写入会导致缓存残留
+        if (!player.isOnline()) {
+            return;
+        }
+        region = convertRegion(region);
         if (StrUtil.isEmpty(region)) {
             return;
         }

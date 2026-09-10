@@ -59,19 +59,15 @@ public class PlaceholderUtil extends PlaceholderExpansion {
         }
         List<String> list = StrUtil.strToStrList(region, "\\|");
         // 国家
-        String national = list.get(0);
+        String national = getPartSafe(list, BaseIpConstants.INDEX_NATIONAL);
         // 省份
-        String provincial = list.get(1);
+        String provincial = getPartSafe(list, BaseIpConstants.INDEX_PROVINCE);
         // 市
-        String municipal = list.get(2);
+        String municipal = getPartSafe(list, BaseIpConstants.INDEX_CITY);
         // 运营商
-        String serviceProvider = list.get(3);
+        String serviceProvider = getPartSafe(list, BaseIpConstants.INDEX_ISP);
         // 区/县
-        String district = "0";
-        // 如果有区/县信息则赋值
-        if (list.size() > 4) {
-            district = list.get(4);
-        }
+        String district = getPartSafe(list, BaseIpConstants.INDEX_DISTRICT);
         String unknown = BaseConstants.CONFIG.getString("unknown", BaseIpConstants.UNKNOWN);
         String local = BaseConstants.CONFIG.getString("local", BaseIpConstants.LOCAL);
 
@@ -114,6 +110,21 @@ public class PlaceholderUtil extends PlaceholderExpansion {
             return "0".equals(district) ? unknown : district;
         }
         return null;
+    }
+
+    /**
+     * 安全地获取地区分段, 缺失时按 0 处理
+     *
+     * @param list  分段列表
+     * @param index 索引
+     * @return 分段值
+     */
+    private String getPartSafe(List<String> list, int index) {
+        if (list.size() <= index) {
+            return "0";
+        }
+        String part = list.get(index);
+        return StrUtil.isEmpty(part) ? "0" : part;
     }
 
     /**
