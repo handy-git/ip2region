@@ -4,7 +4,6 @@ import cn.handyplus.lib.InitApi;
 import cn.handyplus.lib.util.MessageUtil;
 import cn.handyplus.region.hook.PlaceholderUtil;
 import cn.handyplus.region.util.ConfigUtil;
-import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Arrays;
@@ -38,7 +37,7 @@ public class Ip2region extends JavaPlugin {
                 "     |_|                  |___/               "
         );
         for (String line : asciiArt) {
-            MessageUtil.sendConsoleMessage(ChatColor.DARK_AQUA + line);
+            MessageUtil.sendConsoleMessage("&3" + line);
         }
         // 初始化
         initApi.initListener("cn.handyplus.region.listener")
@@ -46,8 +45,8 @@ public class Ip2region extends JavaPlugin {
                 .enableSql("cn.handyplus.region.enter")
                 .addMetrics(16650)
                 .checkVersion();
-        MessageUtil.sendConsoleMessage(ChatColor.DARK_AQUA + "已成功载入服务器!");
-        MessageUtil.sendConsoleMessage(ChatColor.DARK_AQUA + "Author:handy WIKI: https://ricedoc.handyplus.cn/wiki/ip2region/README/");
+        MessageUtil.sendConsoleMessage("&3已成功载入服务器!");
+        MessageUtil.sendConsoleMessage("&3Author:handy WIKI: https://ricedoc.handyplus.cn/wiki/ip2region/README/");
     }
 
     @Override
