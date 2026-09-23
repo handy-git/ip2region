@@ -40,7 +40,7 @@ This plugin currently registers the following PAPI variables (requires: Placehol
 
 ### Data Sources
 
-> The plugin currently supports five methods for getting IP geolocation.  
+> The plugin currently supports six methods for getting IP geolocation.
 > If you have your own ideas or channels, feel free to let me know for integration.
 
 1. offline - Local data source mode (IPv4/IPv6, ~99% accuracy)
@@ -48,18 +48,26 @@ This plugin currently registers the following PAPI variables (requires: Placehol
 3. [ipApi](https://ip-api.com/) - Online API mode (IPv4/IPv6, free with rate limits)
 4. [whois](https://whois.pconline.com.cn/) - Online API mode (IPv4/IPv6, free)
 5. [voreApi](https://api.vore.top) - Online API mode (IPv4/IPv6, free)
+6. [tencent](https://lbs.qq.com/) - Tencent Maps online API mode (requires an application Key and SecretKey)
 
 ### Pros and Cons
 
-| Type             | Cost | Accuracy | Network Required | IP Support  | Max Level      | Website                                           |
-|------------------|------|----------|------------------|-------------|----------------|---------------------------------------------------|
-| offline          | Free | 99%      | No               | IPv4 & IPv6 | City level     | [Site](https://github.com/lionsoul2014/ip2region) |
-| ipPlus360        | Paid | 99.999%  | Yes              | IPv4 & IPv6 | District level | [Site](https://mall.ipplus360.com/)               |
-| ipApi            | Free | 99.9%    | Yes              | IPv4 & IPv6 | City level     | [Site](https://ip-api.com/)                       |
-| whois (1.3.0+)   | Free | 99.9%    | Yes              | IPv4 & IPv6 | District level | [Site](https://whois.pconline.com.cn/)            |
-| voreApi (1.3.0+) | Free | 99.9%    | Yes              | IPv4 & IPv6 | District level | [Site](https://api.vore.top)                      |
+| Type             | Cost               | Accuracy          | Network Required | IP Support  | Max Level      | Website                                           |
+|------------------|--------------------|-------------------|------------------|-------------|----------------|---------------------------------------------------|
+| offline          | Free               | 99%               | No               | IPv4 & IPv6 | City level     | [Site](https://github.com/lionsoul2014/ip2region) |
+| ipPlus360        | Paid               | 99.999%           | Yes              | IPv4 & IPv6 | District level | [Site](https://mall.ipplus360.com/)               |
+| ipApi            | Free               | 99.9%             | Yes              | IPv4 & IPv6 | City level     | [Site](https://ip-api.com/)                       |
+| whois (1.3.0+)   | Free               | 99.9%             | Yes              | IPv4 & IPv6 | District level | [Site](https://whois.pconline.com.cn/)            |
+| voreApi (1.3.0+) | Free               | 99.9%             | Yes              | IPv4 & IPv6 | District level | [Site](https://api.vore.top)                      |
+| tencent          | Per official quota | See official data | Yes              | IPv4        | District level | [Site](https://lbs.qq.com/)                       |
 
 ### Special Note
+
+For offline type starting from plugin version 2.0.0+, data is no longer built-in and needs to be downloaded manually and
+placed in the plugins/ip2region directory.
+
+123 Drive: [Click to Access](https://www.123865.com/s/9DpPjv-ysdFh)  
+GitHub: [Click to Access](https://github.com/lionsoul2014/ip2region)
 
 If you choose to purchase ipPlus360, city-level data is recommended:  
 [IPv4](https://mall.ipplus360.com/pros/IPVFourGeoAPI)  
@@ -74,9 +82,17 @@ ipPlus360Ipv4Url: "https://api.ipplus360.com/ip/geo/v1/district/"
 ipPlus360Ipv6Url: "https://api.ipplus360.com/ip/geo/v1/ipv6/district/"
 ```
 
+For tencent mode, create an application in the Tencent Maps console, enable WebServiceAPI and signature verification:
+
+```
+dataSource: tencent
+tencentAppKey: "application Key"
+tencentAppSecret: "SecretKey"
+```
+
 ### Testing Instructions
 
-For offline and ipApi modes, add the following in `config.yml` and reload the plugin, then re-login the player:
+For offline, ipApi and tencent modes, add the following in `config.yml` and reload the plugin, then re-login the player:
 
 ```
 testIp: test IP
@@ -97,7 +113,3 @@ testIp6: test IP
 ## Usage Statistics
 
 ![](https://bstats.org/signatures/bukkit/ip2region.svg)
-
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=handy-git/ip2region&type=Date)](https://star-history.com/#handy-git/ip2region&Date)
