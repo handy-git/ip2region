@@ -18,8 +18,4 @@ public class Ip2region extends JavaPlugin {
         INSTANCE = this;
     }
 
-    @Override
-    public void onDisable() {
-    }
-
 }
